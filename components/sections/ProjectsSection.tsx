@@ -28,6 +28,12 @@ const ProjectsSection = () => {
       id="projects"
       className="w-screen h-screen flex items-center justify-center px-8 md:px-16 relative grid-bg"
     >
+      {/* Subtle floating decorations */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <div className="absolute top-20 right-20 w-2 h-2 bg-purple-500 rounded-full opacity-40 animate-float" />
+        <div className="absolute bottom-32 left-20 w-2.5 h-2.5 bg-indigo-500 rounded-full opacity-40 animate-float delay-200" />
+      </div>
+
       <div className="max-w-6xl w-full">
         <motion.div
           initial={{ opacity: 0, y: 30 }}

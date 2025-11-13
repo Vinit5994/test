@@ -29,10 +29,20 @@ const HeroSection = () => {
 
   return (
     <section className="w-screen h-screen flex items-center justify-center px-4 sm:px-6 md:px-8 lg:px-16 relative overflow-hidden grid-bg">
-      {/* Simple background accent */}
+      {/* Animated background accent */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none opacity-40">
-        <div className="absolute top-0 left-1/4 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl" />
-        <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-indigo-500/10 rounded-full blur-3xl" />
+        <div className="absolute top-0 left-1/4 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl animate-float-slow" />
+        <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-indigo-500/10 rounded-full blur-3xl animate-float-slow delay-500" />
+        <div className="absolute top-1/2 right-1/3 w-64 h-64 bg-pink-500/10 rounded-full blur-3xl animate-float-slow delay-300" />
+      </div>
+
+      {/* Floating decorative shapes */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <div className="absolute top-20 left-10 w-2 h-2 bg-purple-500 rounded-full opacity-60 animate-float" />
+        <div className="absolute top-40 right-20 w-3 h-3 bg-indigo-500 rounded-full opacity-60 animate-float delay-200" />
+        <div className="absolute bottom-32 left-1/4 w-2 h-2 bg-pink-500 rounded-full opacity-60 animate-float delay-400" />
+        <div className="absolute top-1/3 right-1/4 w-1.5 h-1.5 bg-purple-400 rounded-full opacity-60 animate-float delay-100" />
+        <div className="absolute bottom-40 right-1/3 w-2.5 h-2.5 bg-indigo-400 rounded-full opacity-60 animate-float delay-300" />
       </div>
 
       <motion.div

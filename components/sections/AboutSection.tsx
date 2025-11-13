@@ -28,6 +28,12 @@ const AboutSection = () => {
       id="about"
       className="w-screen h-screen flex items-center justify-center px-4 sm:px-6 md:px-8 lg:px-16 relative overflow-hidden grid-bg"
     >
+      {/* Subtle floating decorations */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <div className="absolute top-1/4 left-10 w-2 h-2 bg-indigo-500 rounded-full opacity-40 animate-float delay-100" />
+        <div className="absolute bottom-1/3 right-16 w-2.5 h-2.5 bg-purple-500 rounded-full opacity-40 animate-float delay-300" />
+      </div>
+
       <div className="max-w-7xl w-full grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 md:gap-10 lg:gap-12 items-center py-8 sm:py-12 md:py-16">
         {/* Left side - Photo and visual elements */}
         <motion.div

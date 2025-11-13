@@ -28,6 +28,12 @@ const EducationSection = () => {
       id="education"
       className="w-screen h-screen flex items-center justify-center px-8 md:px-16 relative grid-bg"
     >
+      {/* Subtle floating decorations */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <div className="absolute top-1/3 left-16 w-2 h-2 bg-purple-500 rounded-full opacity-40 animate-float delay-100" />
+        <div className="absolute bottom-1/4 right-24 w-2 h-2 bg-indigo-500 rounded-full opacity-40 animate-float delay-300" />
+      </div>
+
       <div className="max-w-4xl w-full">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
