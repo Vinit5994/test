@@ -6,6 +6,10 @@ const ThemeToggle = dynamic(() => import('@/components/ThemeToggle'), {
   ssr: false,
 });
 
+const SectionNav = dynamic(() => import('@/components/SectionNav'), {
+  ssr: false,
+});
+
 const HorizontalScroll = dynamic(() => import('@/components/HorizontalScroll'), {
   ssr: false,
 });
@@ -36,8 +40,9 @@ const ContactSection = dynamic(() => import('@/components/sections/ContactSectio
 
 export default function Home() {
   return (
-    <main className="relative">
+    <main className="relative grid-bg">
       <ThemeToggle />
+      <SectionNav />
 
       <HorizontalScroll>
         <HeroSection />
