@@ -30,8 +30,8 @@ const ProjectsSection = () => {
     >
       {/* Subtle floating decorations */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-20 right-20 w-2 h-2 bg-purple-500 rounded-full opacity-40 animate-float" />
-        <div className="absolute bottom-32 left-20 w-2.5 h-2.5 bg-indigo-500 rounded-full opacity-40 animate-float delay-200" />
+        <div className="absolute top-20 right-20 w-2 h-2 rounded-full opacity-40 animate-float" style={{ backgroundColor: '#4A70A9' }} />
+        <div className="absolute bottom-32 left-20 w-2.5 h-2.5 rounded-full opacity-40 animate-float delay-200" style={{ backgroundColor: '#8FABD4' }} />
       </div>
 
       <div className="max-w-6xl w-full h-full flex flex-col justify-center py-6 sm:py-8 md:py-12">

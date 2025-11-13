@@ -31,18 +31,18 @@ const HeroSection = () => {
     <section className="w-screen h-screen flex items-center justify-center px-4 sm:px-6 md:px-8 lg:px-16 relative overflow-hidden grid-bg">
       {/* Animated background accent */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none opacity-40">
-        <div className="absolute top-0 left-1/4 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl animate-float-slow" />
-        <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-indigo-500/10 rounded-full blur-3xl animate-float-slow delay-500" />
-        <div className="absolute top-1/2 right-1/3 w-64 h-64 bg-pink-500/10 rounded-full blur-3xl animate-float-slow delay-300" />
+        <div className="absolute top-0 left-1/4 w-96 h-96 rounded-full blur-3xl animate-float-slow" style={{ backgroundColor: 'rgba(74, 112, 169, 0.15)' }} />
+        <div className="absolute bottom-0 right-1/4 w-96 h-96 rounded-full blur-3xl animate-float-slow delay-500" style={{ backgroundColor: 'rgba(143, 171, 212, 0.15)' }} />
+        <div className="absolute top-1/2 right-1/3 w-64 h-64 rounded-full blur-3xl animate-float-slow delay-300" style={{ backgroundColor: 'rgba(74, 112, 169, 0.12)' }} />
       </div>
 
       {/* Floating decorative shapes */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-20 left-10 w-2 h-2 bg-purple-500 rounded-full opacity-60 animate-float" />
-        <div className="absolute top-40 right-20 w-3 h-3 bg-indigo-500 rounded-full opacity-60 animate-float delay-200" />
-        <div className="absolute bottom-32 left-1/4 w-2 h-2 bg-pink-500 rounded-full opacity-60 animate-float delay-400" />
-        <div className="absolute top-1/3 right-1/4 w-1.5 h-1.5 bg-purple-400 rounded-full opacity-60 animate-float delay-100" />
-        <div className="absolute bottom-40 right-1/3 w-2.5 h-2.5 bg-indigo-400 rounded-full opacity-60 animate-float delay-300" />
+        <div className="absolute top-20 left-10 w-2 h-2 rounded-full opacity-60 animate-float" style={{ backgroundColor: '#4A70A9' }} />
+        <div className="absolute top-40 right-20 w-3 h-3 rounded-full opacity-60 animate-float delay-200" style={{ backgroundColor: '#8FABD4' }} />
+        <div className="absolute bottom-32 left-1/4 w-2 h-2 rounded-full opacity-60 animate-float delay-400" style={{ backgroundColor: '#4A70A9' }} />
+        <div className="absolute top-1/3 right-1/4 w-1.5 h-1.5 rounded-full opacity-60 animate-float delay-100" style={{ backgroundColor: '#8FABD4' }} />
+        <div className="absolute bottom-40 right-1/3 w-2.5 h-2.5 rounded-full opacity-60 animate-float delay-300" style={{ backgroundColor: '#4A70A9' }} />
       </div>
 
       <motion.div
@@ -85,14 +85,20 @@ const HeroSection = () => {
         <motion.div variants={itemVariants} className="flex flex-wrap gap-4 mb-16 justify-center">
           <a
             href="#about"
-            className="cursor-hover group px-8 py-3.5 bg-purple-600 hover:bg-purple-700 text-white rounded-lg font-medium transition-all duration-200 flex items-center gap-2 glow-effect"
+            className="cursor-hover group px-8 py-3.5 text-white rounded-lg font-medium transition-all duration-200 flex items-center gap-2 glow-effect"
+            style={{ backgroundColor: '#4A70A9' }}
+            onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#3a5a89'}
+            onMouseLeave={(e) => e.currentTarget.style.backgroundColor = '#4A70A9'}
           >
             <span>Explore My Work</span>
             <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
           </a>
           <a
             href="#contact"
-            className="cursor-hover px-8 py-3.5 border border-gray-300 dark:border-gray-700 hover:border-purple-600 dark:hover:border-purple-500 rounded-lg font-medium transition-all duration-200 glow-effect"
+            className="cursor-hover px-8 py-3.5 border rounded-lg font-medium transition-all duration-200 glow-effect"
+            style={{ borderColor: '#4A70A9' }}
+            onMouseEnter={(e) => e.currentTarget.style.borderColor = '#8FABD4'}
+            onMouseLeave={(e) => e.currentTarget.style.borderColor = '#4A70A9'}
           >
             Get In Touch
           </a>
@@ -133,8 +139,8 @@ const HeroSection = () => {
             ease: 'easeInOut',
           }}
         >
-          <span className="text-xs text-gray-400 font-medium tracking-wider uppercase">Scroll</span>
-          <ArrowRight className="w-5 h-5 text-indigo-400" />
+          <span className="text-xs font-medium tracking-wider uppercase" style={{ color: '#8FABD4' }}>Scroll</span>
+          <ArrowRight className="w-5 h-5" style={{ color: '#8FABD4' }} />
         </motion.div>
       </motion.div>
     </section>

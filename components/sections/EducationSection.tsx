@@ -30,8 +30,8 @@ const EducationSection = () => {
     >
       {/* Subtle floating decorations */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-1/3 left-16 w-2 h-2 bg-purple-500 rounded-full opacity-40 animate-float delay-100" />
-        <div className="absolute bottom-1/4 right-24 w-2 h-2 bg-indigo-500 rounded-full opacity-40 animate-float delay-300" />
+        <div className="absolute top-1/3 left-16 w-2 h-2 rounded-full opacity-40 animate-float delay-100" style={{ backgroundColor: '#4A70A9' }} />
+        <div className="absolute bottom-1/4 right-24 w-2 h-2 rounded-full opacity-40 animate-float delay-300" style={{ backgroundColor: '#8FABD4' }} />
       </div>
 
       <div className="max-w-4xl w-full">

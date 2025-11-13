@@ -30,8 +30,8 @@ const AboutSection = () => {
     >
       {/* Subtle floating decorations */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-1/4 left-10 w-2 h-2 bg-indigo-500 rounded-full opacity-40 animate-float delay-100" />
-        <div className="absolute bottom-1/3 right-16 w-2.5 h-2.5 bg-purple-500 rounded-full opacity-40 animate-float delay-300" />
+        <div className="absolute top-1/4 left-10 w-2 h-2 rounded-full opacity-40 animate-float delay-100" style={{ backgroundColor: '#8FABD4' }} />
+        <div className="absolute bottom-1/3 right-16 w-2.5 h-2.5 rounded-full opacity-40 animate-float delay-300" style={{ backgroundColor: '#4A70A9' }} />
       </div>
 
       <div className="max-w-7xl w-full grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 md:gap-10 lg:gap-12 items-center py-8 sm:py-12 md:py-16">
@@ -46,7 +46,8 @@ const AboutSection = () => {
           <div className="relative w-full max-w-md mx-auto">
             {/* Decorative elements */}
             <motion.div
-              className="absolute -top-4 -left-4 w-48 h-48 sm:w-72 sm:h-72 bg-indigo-500/20 rounded-3xl blur-2xl"
+              className="absolute -top-4 -left-4 w-48 h-48 sm:w-72 sm:h-72 rounded-3xl blur-2xl"
+              style={{ backgroundColor: 'rgba(143, 171, 212, 0.2)' }}
               animate={{
                 scale: [1, 1.1, 1],
                 rotate: [0, 5, 0],
@@ -59,10 +60,10 @@ const AboutSection = () => {
             />
 
             {/* Photo placeholder */}
-            <div className="relative z-10 aspect-square rounded-2xl sm:rounded-3xl glass overflow-hidden border-2 border-indigo-500/20">
-              <div className="w-full h-full bg-gradient-to-br from-indigo-500/20 to-pink-500/20 flex items-center justify-center">
+            <div className="relative z-10 aspect-square rounded-2xl sm:rounded-3xl glass overflow-hidden border-2" style={{ borderColor: 'rgba(74, 112, 169, 0.2)' }}>
+              <div className="w-full h-full bg-gradient-to-br flex items-center justify-center" style={{ background: 'linear-gradient(135deg, rgba(143, 171, 212, 0.2) 0%, rgba(74, 112, 169, 0.2) 100%)' }}>
                 <div className="text-center p-4">
-                  <div className="w-20 h-20 sm:w-32 sm:h-32 mx-auto mb-3 sm:mb-4 rounded-full bg-indigo-500/30 flex items-center justify-center">
+                  <div className="w-20 h-20 sm:w-32 sm:h-32 mx-auto mb-3 sm:mb-4 rounded-full flex items-center justify-center" style={{ backgroundColor: 'rgba(74, 112, 169, 0.3)' }}>
                     <span className="text-3xl sm:text-5xl font-bold gradient-text">VP</span>
                   </div>
                   <p className="text-xs sm:text-sm text-gray-400">
