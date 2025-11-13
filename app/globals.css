@@ -50,6 +50,9 @@ body {
   overflow-x: hidden;
   scroll-behavior: smooth;
   cursor: none;
+  background-color: var(--background);
+  color: var(--foreground);
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 /* Hide default cursor */
@@ -202,4 +205,22 @@ body {
   );
   background-size: 200% 100%;
   animation: shine 3s linear infinite;
+}
+
+/* Hide scrollbar but keep functionality */
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+/* Line clamp utilities */
+.line-clamp-3 {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
 }
