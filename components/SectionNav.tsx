@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import { createPortal } from 'react-dom';
 import { motion } from 'framer-motion';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
@@ -69,7 +70,7 @@ const SectionNav = () => {
     return null;
   }
 
-  return (
+  return createPortal(
     <div className="fixed left-6 md:left-8 top-1/2 -translate-y-1/2 z-50 hidden lg:block">
       <nav className="flex flex-col gap-4">
         {sections.map((section, index) => (
@@ -108,7 +109,8 @@ const SectionNav = () => {
           </button>
         ))}
       </nav>
-    </div>
+    </div>,
+    document.body
   );
 };
 

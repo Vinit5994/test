@@ -1,14 +1,23 @@
 'use client';
 
-
 import { useState, useEffect } from 'react';
+import { createPortal } from 'react-dom';
 import { Moon, Sun, Sparkles } from 'lucide-react';
 import { useTheme } from './ThemeProvider';
 
 const ThemeToggle = () => {
   const { theme, toggleTheme } = useTheme();
+  const [mounted, setMounted] = useState(false);
 
-  return (
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  if (!mounted) {
+    return null;
+  }
+
+  return createPortal(
     <button
       onClick={toggleTheme}
       className="fixed top-6 right-6 md:top-8 md:right-8 z-50 w-16 h-16 md:w-14 md:h-14 rounded-full glass cursor-hover group overflow-hidden"
@@ -42,7 +51,8 @@ const ThemeToggle = () => {
 
       {/* Ripple effect on click */}
       <div className="absolute inset-0 rounded-full bg-indigo-400/30 scale-0 group-active:scale-100 group-active:opacity-0 transition-all duration-500" />
-    </button>
+    </button>,
+    document.body
   );
 };
 

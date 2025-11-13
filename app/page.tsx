@@ -6,7 +6,6 @@ import dynamic from 'next/dynamic';
 // Only load client-only components dynamically
 const ThemeToggle = dynamic(() => import('@/components/ThemeToggle'), {
   ssr: false,
-  loading: () => <div className="fixed top-8 right-8 z-50 w-14 h-14" />
 });
 
 const SectionNav = dynamic(() => import('@/components/SectionNav'), {
