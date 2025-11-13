@@ -46,7 +46,7 @@ const AboutSection = () => {
           <div className="relative w-full max-w-md mx-auto">
             {/* Decorative elements */}
             <motion.div
-              className="absolute -top-4 -left-4 w-72 h-72 bg-indigo-500/20 rounded-3xl blur-2xl"
+              className="absolute -top-4 -left-4 w-48 h-48 sm:w-72 sm:h-72 bg-indigo-500/20 rounded-3xl blur-2xl"
               animate={{
                 scale: [1, 1.1, 1],
                 rotate: [0, 5, 0],
@@ -59,13 +59,13 @@ const AboutSection = () => {
             />
 
             {/* Photo placeholder */}
-            <div className="relative z-10 aspect-square rounded-3xl glass overflow-hidden border-2 border-indigo-500/20">
+            <div className="relative z-10 aspect-square rounded-2xl sm:rounded-3xl glass overflow-hidden border-2 border-indigo-500/20">
               <div className="w-full h-full bg-gradient-to-br from-indigo-500/20 to-pink-500/20 flex items-center justify-center">
-                <div className="text-center">
-                  <div className="w-32 h-32 mx-auto mb-4 rounded-full bg-indigo-500/30 flex items-center justify-center">
-                    <span className="text-5xl font-bold gradient-text">VP</span>
+                <div className="text-center p-4">
+                  <div className="w-20 h-20 sm:w-32 sm:h-32 mx-auto mb-3 sm:mb-4 rounded-full bg-indigo-500/30 flex items-center justify-center">
+                    <span className="text-3xl sm:text-5xl font-bold gradient-text">VP</span>
                   </div>
-                  <p className="text-sm text-gray-400">
+                  <p className="text-xs sm:text-sm text-gray-400">
                     Add your photo here
                     <br />
                     (400x400px recommended)
@@ -74,16 +74,16 @@ const AboutSection = () => {
               </div>
             </div>
 
-            {/* Floating skill badges */}
+            {/* Floating skill badges - hidden on mobile */}
             <motion.div
-              className="absolute -right-8 top-1/4 px-4 py-2 glass rounded-full text-sm font-medium"
+              className="hidden lg:block absolute -right-8 top-1/4 px-4 py-2 glass rounded-full text-sm font-medium"
               animate={{ y: [0, -10, 0] }}
               transition={{ duration: 3, repeat: Infinity }}
             >
               Web3 Developer
             </motion.div>
             <motion.div
-              className="absolute -left-8 bottom-1/4 px-4 py-2 glass rounded-full text-sm font-medium"
+              className="hidden lg:block absolute -left-8 bottom-1/4 px-4 py-2 glass rounded-full text-sm font-medium"
               animate={{ y: [0, 10, 0] }}
               transition={{ duration: 3, repeat: Infinity, delay: 0.5 }}
             >
@@ -98,13 +98,13 @@ const AboutSection = () => {
           whileInView={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
-          className="max-h-[80vh] overflow-y-auto scrollbar-hide"
+          className="max-h-[75vh] sm:max-h-[80vh] overflow-y-auto scrollbar-hide"
         >
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 sm:mb-6">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-3 sm:mb-4 md:mb-6">
             About <span className="gradient-text">Me</span>
           </h2>
 
-          <p className="text-sm sm:text-base md:text-lg text-gray-500 dark:text-gray-400 mb-6 sm:mb-8 leading-relaxed">
+          <p className="text-xs sm:text-sm md:text-base lg:text-lg text-gray-500 dark:text-gray-400 mb-4 sm:mb-6 md:mb-8 leading-relaxed">
             I&apos;m a passionate Full Stack Web3 Developer with expertise in building
             decentralized applications, smart contracts, and blockchain solutions.
             Currently working at Lampros Tech, I&apos;ve contributed to various innovative

@@ -45,6 +45,12 @@ const HorizontalScroll = ({ children }: HorizontalScrollProps) => {
             anticipatePin: 1,
             invalidateOnRefresh: true,
             markers: false,
+            snap: {
+              snapTo: 1 / 5, // 6 sections = 5 intervals (0, 0.2, 0.4, 0.6, 0.8, 1)
+              duration: 0.5,
+              delay: 0,
+              ease: 'power2.inOut',
+            },
           },
         });
 

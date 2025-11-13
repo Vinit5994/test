@@ -13,6 +13,10 @@ const SectionNav = dynamic(() => import('@/components/SectionNav'), {
   ssr: false,
 });
 
+const LoadingScreen = dynamic(() => import('@/components/LoadingScreen'), {
+  ssr: false,
+});
+
 // Import sections directly since they're already 'use client'
 import HorizontalScroll from '@/components/HorizontalScroll';
 import HeroSection from '@/components/sections/HeroSection';
@@ -29,6 +33,7 @@ export default function Home() {
 
   return (
     <main className="relative min-h-screen">
+      <LoadingScreen />
       <ThemeToggle />
       <SectionNav />
 
