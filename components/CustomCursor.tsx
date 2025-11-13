@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 
 const CustomCursor = () => {
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+  const [mousePosition, setMousePosition] = useState({ x: -100, y: -100 }); // Start off-screen
   const [isHovering, setIsHovering] = useState(false);
   const [mounted, setMounted] = useState(false);
 
@@ -38,10 +38,6 @@ const CustomCursor = () => {
       window.removeEventListener('mouseover', handleMouseOver);
     };
   }, []);
-
-  if (!mounted) {
-    return null;
-  }
 
   return (
     <>

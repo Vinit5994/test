@@ -1,46 +1,34 @@
 'use client';
 
+import { Suspense, useEffect } from 'react';
 import dynamic from 'next/dynamic';
 
+// Only load client-only components dynamically
 const ThemeToggle = dynamic(() => import('@/components/ThemeToggle'), {
   ssr: false,
+  loading: () => <div className="fixed top-8 right-8 z-50 w-14 h-14" />
 });
 
 const SectionNav = dynamic(() => import('@/components/SectionNav'), {
   ssr: false,
 });
 
-const HorizontalScroll = dynamic(() => import('@/components/HorizontalScroll'), {
-  ssr: false,
-});
-
-const HeroSection = dynamic(() => import('@/components/sections/HeroSection'), {
-  ssr: false,
-});
-
-const AboutSection = dynamic(() => import('@/components/sections/AboutSection'), {
-  ssr: false,
-});
-
-const EducationSection = dynamic(() => import('@/components/sections/EducationSection'), {
-  ssr: false,
-});
-
-const ExperienceSection = dynamic(() => import('@/components/sections/ExperienceSection'), {
-  ssr: false,
-});
-
-const ProjectsSection = dynamic(() => import('@/components/sections/ProjectsSection'), {
-  ssr: false,
-});
-
-const ContactSection = dynamic(() => import('@/components/sections/ContactSection'), {
-  ssr: false,
-});
+// Import sections directly since they're already 'use client'
+import HorizontalScroll from '@/components/HorizontalScroll';
+import HeroSection from '@/components/sections/HeroSection';
+import AboutSection from '@/components/sections/AboutSection';
+import EducationSection from '@/components/sections/EducationSection';
+import ExperienceSection from '@/components/sections/ExperienceSection';
+import ProjectsSection from '@/components/sections/ProjectsSection';
+import ContactSection from '@/components/sections/ContactSection';
 
 export default function Home() {
+  useEffect(() => {
+    console.log('Home component mounted');
+  }, []);
+
   return (
-    <main className="relative grid-bg">
+    <main className="relative min-h-screen">
       <ThemeToggle />
       <SectionNav />
 
