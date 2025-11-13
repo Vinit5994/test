@@ -35,7 +35,7 @@ const ExperienceSection = () => {
   return (
     <section
       id="experience"
-      className="w-screen h-screen flex items-center justify-center px-4 sm:px-6 md:px-8 lg:px-16 relative overflow-hidden"
+      className="w-screen h-screen flex items-center justify-center px-4 sm:px-6 md:px-8 lg:px-16 relative overflow-hidden grid-bg"
     >
       <div className="max-w-6xl w-full h-full flex flex-col justify-center py-8 sm:py-12 md:py-16">
         <motion.div

@@ -26,7 +26,7 @@ const EducationSection = () => {
   return (
     <section
       id="education"
-      className="w-screen h-screen flex items-center justify-center px-8 md:px-16 relative"
+      className="w-screen h-screen flex items-center justify-center px-8 md:px-16 relative grid-bg"
     >
       <div className="max-w-4xl w-full">
         <motion.div

@@ -26,7 +26,7 @@ const ProjectsSection = () => {
   return (
     <section
       id="projects"
-      className="w-screen h-screen flex items-center justify-center px-8 md:px-16 relative"
+      className="w-screen h-screen flex items-center justify-center px-8 md:px-16 relative grid-bg"
     >
       <div className="max-w-6xl w-full">
         <motion.div
@@ -59,7 +59,7 @@ const ProjectsSection = () => {
                 className={`absolute inset-0 bg-gradient-to-br ${project.gradient} opacity-0 group-hover:opacity-10 rounded-3xl transition-opacity duration-300 blur-xl`}
               />
 
-              <div className="relative glass rounded-3xl p-8 h-full hover:bg-white/5 transition-all duration-300">
+              <div className="relative glass rounded-3xl p-8 h-full hover:bg-white/5 transition-all duration-300 glow-effect">
                 {/* Icon */}
                 <div
                   className={`inline-flex p-4 rounded-2xl bg-gradient-to-br ${project.gradient} mb-6 group-hover:scale-110 transition-transform duration-300`}

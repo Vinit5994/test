@@ -28,7 +28,7 @@ const HeroSection = () => {
   };
 
   return (
-    <section className="w-screen h-screen flex items-center justify-center px-4 sm:px-6 md:px-8 lg:px-16 relative overflow-hidden">
+    <section className="w-screen h-screen flex items-center justify-center px-4 sm:px-6 md:px-8 lg:px-16 relative overflow-hidden grid-bg">
       {/* Simple background accent */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none opacity-40">
         <div className="absolute top-0 left-1/4 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl" />
@@ -75,14 +75,14 @@ const HeroSection = () => {
         <motion.div variants={itemVariants} className="flex flex-wrap gap-4 mb-16 justify-center">
           <a
             href="#about"
-            className="cursor-hover group px-8 py-3.5 bg-purple-600 hover:bg-purple-700 text-white rounded-lg font-medium transition-all duration-200 flex items-center gap-2"
+            className="cursor-hover group px-8 py-3.5 bg-purple-600 hover:bg-purple-700 text-white rounded-lg font-medium transition-all duration-200 flex items-center gap-2 glow-effect"
           >
             <span>Explore My Work</span>
             <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
           </a>
           <a
             href="#contact"
-            className="cursor-hover px-8 py-3.5 border border-gray-300 dark:border-gray-700 hover:border-purple-600 dark:hover:border-purple-500 rounded-lg font-medium transition-all duration-200"
+            className="cursor-hover px-8 py-3.5 border border-gray-300 dark:border-gray-700 hover:border-purple-600 dark:hover:border-purple-500 rounded-lg font-medium transition-all duration-200 glow-effect"
           >
             Get In Touch
           </a>

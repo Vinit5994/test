@@ -38,7 +38,7 @@ const ContactSection = () => {
   return (
     <section
       id="contact"
-      className="w-screen h-screen flex items-center justify-center px-8 md:px-16 relative overflow-hidden"
+      className="w-screen h-screen flex items-center justify-center px-8 md:px-16 relative overflow-hidden grid-bg"
     >
       {/* Animated background */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
@@ -114,7 +114,7 @@ const ContactSection = () => {
                 className={`absolute inset-0 bg-gradient-to-br ${method.color} opacity-0 group-hover:opacity-10 rounded-2xl transition-opacity duration-300 blur-xl`}
               />
 
-              <div className="relative glass rounded-2xl p-6 hover:bg-white/5 transition-all duration-300 h-full">
+              <div className="relative glass rounded-2xl p-6 hover:bg-white/5 transition-all duration-300 h-full glow-effect">
                 <div
                   className={`inline-flex p-3 rounded-xl bg-gradient-to-br ${method.color} mb-4 group-hover:scale-110 transition-transform duration-300`}
                 >
@@ -152,7 +152,7 @@ const ContactSection = () => {
             </p>
             <motion.a
               href="mailto:vinitpithadiya@gmail.com"
-              className="px-8 py-4 bg-gradient-to-r from-indigo-500 to-purple-500 rounded-full font-semibold flex items-center gap-2 cursor-hover group"
+              className="px-8 py-4 bg-gradient-to-r from-indigo-500 to-purple-500 rounded-full font-semibold flex items-center gap-2 cursor-hover group glow-effect"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >

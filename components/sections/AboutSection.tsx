@@ -26,7 +26,7 @@ const AboutSection = () => {
   return (
     <section
       id="about"
-      className="w-screen h-screen flex items-center justify-center px-4 sm:px-6 md:px-8 lg:px-16 relative overflow-hidden"
+      className="w-screen h-screen flex items-center justify-center px-4 sm:px-6 md:px-8 lg:px-16 relative overflow-hidden grid-bg"
     >
       <div className="max-w-7xl w-full grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 md:gap-10 lg:gap-12 items-center py-8 sm:py-12 md:py-16">
         {/* Left side - Photo and visual elements */}
@@ -111,7 +111,7 @@ const AboutSection = () => {
             {skills.map((skill, index) => (
               <motion.div
                 key={index}
-                className="glass rounded-lg sm:rounded-xl p-3 sm:p-4 cursor-hover group hover:bg-white/5 dark:hover:bg-white/5 transition-all"
+                className="glass rounded-lg sm:rounded-xl p-3 sm:p-4 cursor-hover group hover:bg-white/5 dark:hover:bg-white/5 transition-all glow-effect"
                 whileHover={{ scale: 1.05 }}
                 transition={{ duration: 0.2 }}
               >
