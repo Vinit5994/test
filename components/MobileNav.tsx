@@ -11,6 +11,7 @@ const sections = [
   { id: 'education', label: 'Education' },
   { id: 'experience', label: 'Experience' },
   { id: 'projects', label: 'Projects' },
+  { id: 'poap', label: 'POAP' },
   { id: 'contact', label: 'Contact Us' },
 ];
 
@@ -40,15 +41,15 @@ const MobileNav = () => {
 
     // Small delay to let menu close animation start
     setTimeout(() => {
-      const sectionId = sections[index].id;
-      const element = document.getElementById(sectionId);
+      // Calculate scroll amount for horizontal scroll
+      // Each section is 100vh, so we scroll by viewport height * index
+      const sectionHeight = window.innerHeight;
+      const scrollAmount = sectionHeight * index;
 
-      if (element) {
-        element.scrollIntoView({
-          behavior: 'smooth',
-          block: 'start',
-        });
-      }
+      window.scrollTo({
+        top: scrollAmount,
+        behavior: 'smooth',
+      });
     }, 100);
   };
 

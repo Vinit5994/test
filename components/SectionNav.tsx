@@ -13,6 +13,7 @@ const sections = [
   { id: 'education', label: 'Education' },
   { id: 'experience', label: 'Experience' },
   { id: 'projects', label: 'Projects' },
+  { id: 'poap', label: 'POAP' },
   { id: 'contact', label: 'Contact' },
 ];
 
@@ -40,9 +41,9 @@ const SectionNav = () => {
           start: 'top top',
           end: mainTrigger.vars.end,
           onUpdate: (self) => {
-            // Calculate which section we're on (6 sections total)
+            // Calculate which section we're on (7 sections total)
             const progress = self.progress;
-            const sectionIndex = Math.round(progress * 5); // 0 to 5
+            const sectionIndex = Math.round(progress * 6); // 0 to 6
             setActiveSection(sectionIndex);
           },
         });
