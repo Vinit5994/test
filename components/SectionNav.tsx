@@ -2,6 +2,10 @@
 
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
+import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+gsap.registerPlugin(ScrollTrigger);
 
 const sections = [
   { id: 'hero', label: 'Home' },
@@ -19,6 +23,36 @@ const SectionNav = () => {
   useEffect(() => {
     setMounted(true);
   }, []);
+
+  useEffect(() => {
+    if (!mounted) return;
+
+    // Wait for ScrollTrigger to be set up by HorizontalScroll
+    const timer = setTimeout(() => {
+      // Get the main ScrollTrigger instance
+      const triggers = ScrollTrigger.getAll();
+      const mainTrigger = triggers.find(t => t.vars.snap);
+
+      if (mainTrigger) {
+        // Update active section based on scroll progress
+        ScrollTrigger.create({
+          trigger: mainTrigger.trigger,
+          start: 'top top',
+          end: mainTrigger.vars.end,
+          onUpdate: (self) => {
+            // Calculate which section we're on (6 sections total)
+            const progress = self.progress;
+            const sectionIndex = Math.round(progress * 5); // 0 to 5
+            setActiveSection(sectionIndex);
+          },
+        });
+      }
+    }, 200);
+
+    return () => {
+      clearTimeout(timer);
+    };
+  }, [mounted]);
 
   const scrollToSection = (index: number) => {
     const sectionHeight = window.innerHeight;

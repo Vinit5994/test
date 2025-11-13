@@ -11,7 +11,7 @@ const ThemeToggle = () => {
   return (
     <button
       onClick={toggleTheme}
-      className="fixed top-6 right-6 md:top-8 md:right-8 z-50 w-14 h-14 rounded-full glass cursor-hover group overflow-hidden"
+      className="fixed top-6 right-6 md:top-8 md:right-8 z-50 w-16 h-16 md:w-14 md:h-14 rounded-full glass cursor-hover group overflow-hidden"
       aria-label="Toggle theme"
     >
       {/* Background gradient effect */}
@@ -33,9 +33,9 @@ const ThemeToggle = () => {
           }}
         >
           {theme === 'dark' ? (
-            <Moon className="w-6 h-6 text-indigo-400 drop-shadow-lg" />
+            <Moon className="w-7 h-7 md:w-6 md:h-6 text-indigo-400 drop-shadow-lg" />
           ) : (
-            <Sun className="w-6 h-6 text-yellow-500 drop-shadow-lg" />
+            <Sun className="w-7 h-7 md:w-6 md:h-6 text-yellow-500 drop-shadow-lg" />
           )}
         </div>
       </div>

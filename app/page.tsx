@@ -13,6 +13,10 @@ const SectionNav = dynamic(() => import('@/components/SectionNav'), {
   ssr: false,
 });
 
+const MobileNav = dynamic(() => import('@/components/MobileNav'), {
+  ssr: false,
+});
+
 const LoadingScreen = dynamic(() => import('@/components/LoadingScreen'), {
   ssr: false,
   loading: () => null,
@@ -33,6 +37,7 @@ export default function Home() {
       <LoadingScreen />
       <ThemeToggle />
       <SectionNav />
+      <MobileNav />
 
       <HorizontalScroll>
         <HeroSection />
