@@ -36,13 +36,20 @@ const MobileNav = () => {
   }, [isOpen]);
 
   const scrollToSection = (index: number) => {
-    const sectionHeight = window.innerHeight;
-    const scrollAmount = sectionHeight * index;
-    window.scrollTo({
-      top: scrollAmount,
-      behavior: 'smooth',
-    });
     setIsOpen(false);
+
+    // Small delay to let menu close animation start
+    setTimeout(() => {
+      const sectionId = sections[index].id;
+      const element = document.getElementById(sectionId);
+
+      if (element) {
+        element.scrollIntoView({
+          behavior: 'smooth',
+          block: 'start',
+        });
+      }
+    }, 100);
   };
 
   if (!mounted) {
