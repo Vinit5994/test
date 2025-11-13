@@ -1,6 +1,6 @@
 'use client';
 
-import { Suspense, useEffect } from 'react';
+import { Suspense } from 'react';
 import dynamic from 'next/dynamic';
 
 // Only load client-only components dynamically
@@ -15,6 +15,7 @@ const SectionNav = dynamic(() => import('@/components/SectionNav'), {
 
 const LoadingScreen = dynamic(() => import('@/components/LoadingScreen'), {
   ssr: false,
+  loading: () => null,
 });
 
 // Import sections directly since they're already 'use client'
@@ -27,10 +28,6 @@ import ProjectsSection from '@/components/sections/ProjectsSection';
 import ContactSection from '@/components/sections/ContactSection';
 
 export default function Home() {
-  useEffect(() => {
-    console.log('Home component mounted');
-  }, []);
-
   return (
     <main className="relative min-h-screen">
       <LoadingScreen />

@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useRef, ReactNode, useState } from 'react';
+import { useEffect, useRef, ReactNode } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
@@ -13,18 +13,12 @@ interface HorizontalScrollProps {
 const HorizontalScroll = ({ children }: HorizontalScrollProps) => {
   const containerRef = useRef<HTMLDivElement>(null);
   const scrollRef = useRef<HTMLDivElement>(null);
-  const [isReady, setIsReady] = useState(true); // Start with true to show content immediately
 
   useEffect(() => {
     const container = containerRef.current;
     const scroll = scrollRef.current;
 
-    console.log('HorizontalScroll mounted', { container, scroll, children });
-
-    if (!container || !scroll) {
-      console.warn('HorizontalScroll: Missing refs');
-      return;
-    }
+    if (!container || !scroll) return;
 
     // Small delay to ensure DOM is ready for GSAP
     const timer = setTimeout(() => {
