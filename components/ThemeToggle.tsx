@@ -1,7 +1,6 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { motion } from 'framer-motion';
 import { Moon, Sun } from 'lucide-react';
 import { useTheme } from './ThemeProvider';
 
@@ -14,29 +13,28 @@ const ThemeToggle = () => {
   }, []);
 
   if (!mounted) {
-    return null;
+    return (
+      <div className="fixed top-8 right-8 z-50 w-11 h-11" />
+    );
   }
 
   return (
-    <motion.button
+    <button
       onClick={toggleTheme}
-      className="fixed top-8 right-8 z-50 p-3 rounded-full glass cursor-hover group"
-      whileHover={{ scale: 1.1 }}
-      whileTap={{ scale: 0.95 }}
+      className="fixed top-8 right-8 z-50 p-3 rounded-full glass cursor-hover group hover:scale-110 active:scale-95 transition-all duration-200"
       aria-label="Toggle theme"
     >
-      <motion.div
-        initial={false}
-        animate={{ rotate: theme === 'dark' ? 0 : 180 }}
-        transition={{ duration: 0.3, ease: 'easeInOut' }}
+      <div
+        className="transition-transform duration-300 ease-in-out"
+        style={{ transform: theme === 'dark' ? 'rotate(0deg)' : 'rotate(180deg)' }}
       >
         {theme === 'dark' ? (
-          <Moon className="w-5 h-5 text-indigo-400" />
+          <Moon className="w-5 h-5 text-indigo-400 transition-colors" />
         ) : (
-          <Sun className="w-5 h-5 text-yellow-500" />
+          <Sun className="w-5 h-5 text-yellow-500 transition-colors" />
         )}
-      </motion.div>
-    </motion.button>
+      </div>
+    </button>
   );
 };
 
