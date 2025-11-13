@@ -4,10 +4,17 @@ import { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 
 const LoadingScreen = () => {
+  const [mounted, setMounted] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
   const [progress, setProgress] = useState(0);
 
   useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  useEffect(() => {
+    if (!mounted) return;
+
     // Simulate loading progress
     const interval = setInterval(() => {
       setProgress((prev) => {
@@ -28,9 +35,9 @@ const LoadingScreen = () => {
       clearInterval(interval);
       clearTimeout(timer);
     };
-  }, []);
+  }, [mounted]);
 
-  if (!isLoading) return null;
+  if (!mounted || !isLoading) return null;
 
   return (
     <motion.div
