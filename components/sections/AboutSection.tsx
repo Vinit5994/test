@@ -26,9 +26,9 @@ const AboutSection = () => {
   return (
     <section
       id="about"
-      className="w-screen h-screen flex items-center justify-center px-8 md:px-16 relative"
+      className="w-screen h-screen flex items-center justify-center px-4 sm:px-6 md:px-8 lg:px-16 relative overflow-hidden"
     >
-      <div className="max-w-7xl w-full grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+      <div className="max-w-7xl w-full grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 md:gap-10 lg:gap-12 items-center py-8 sm:py-12 md:py-16">
         {/* Left side - Photo and visual elements */}
         <motion.div
           initial={{ opacity: 0, x: -50 }}
@@ -92,12 +92,13 @@ const AboutSection = () => {
           whileInView={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
+          className="max-h-[80vh] overflow-y-auto scrollbar-hide"
         >
-          <h2 className="text-5xl font-bold mb-6">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 sm:mb-6">
             About <span className="gradient-text">Me</span>
           </h2>
 
-          <p className="text-lg text-gray-400 mb-8 leading-relaxed">
+          <p className="text-sm sm:text-base md:text-lg text-gray-500 dark:text-gray-400 mb-6 sm:mb-8 leading-relaxed">
             I&apos;m a passionate Full Stack Web3 Developer with expertise in building
             decentralized applications, smart contracts, and blockchain solutions.
             Currently working at Lampros Tech, I&apos;ve contributed to various innovative
@@ -106,31 +107,31 @@ const AboutSection = () => {
           </p>
 
           {/* Skills grid */}
-          <div className="grid grid-cols-2 gap-4 mb-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4 mb-6 sm:mb-8">
             {skills.map((skill, index) => (
               <motion.div
                 key={index}
-                className="glass rounded-xl p-4 cursor-hover group hover:bg-white/5 transition-all"
+                className="glass rounded-lg sm:rounded-xl p-3 sm:p-4 cursor-hover group hover:bg-white/5 dark:hover:bg-white/5 transition-all"
                 whileHover={{ scale: 1.05 }}
                 transition={{ duration: 0.2 }}
               >
-                <skill.icon className="w-8 h-8 text-indigo-400 mb-2 group-hover:scale-110 transition-transform" />
-                <h3 className="font-semibold mb-1">{skill.title}</h3>
-                <p className="text-sm text-gray-400">{skill.desc}</p>
+                <skill.icon className="w-6 h-6 sm:w-8 sm:h-8 text-indigo-500 dark:text-indigo-400 mb-2 group-hover:scale-110 transition-transform" />
+                <h3 className="font-semibold mb-1 text-sm sm:text-base">{skill.title}</h3>
+                <p className="text-xs sm:text-sm text-gray-600 dark:text-gray-400">{skill.desc}</p>
               </motion.div>
             ))}
           </div>
 
           {/* Languages */}
-          <div className="mb-6">
-            <h3 className="text-sm font-semibold text-gray-400 mb-3 uppercase tracking-wider">
+          <div className="mb-4 sm:mb-6">
+            <h3 className="text-xs sm:text-sm font-semibold text-gray-500 dark:text-gray-400 mb-2 sm:mb-3 uppercase tracking-wider">
               Languages
             </h3>
             <div className="flex flex-wrap gap-2">
               {languages.map((lang, index) => (
                 <motion.span
                   key={index}
-                  className="px-4 py-2 glass rounded-full text-sm cursor-hover hover:bg-indigo-500/20 transition-colors"
+                  className="px-3 py-1.5 sm:px-4 sm:py-2 glass rounded-full text-xs sm:text-sm cursor-hover hover:bg-indigo-500/20 transition-colors"
                   whileHover={{ scale: 1.05 }}
                 >
                   {lang}
@@ -141,14 +142,14 @@ const AboutSection = () => {
 
           {/* Technologies */}
           <div>
-            <h3 className="text-sm font-semibold text-gray-400 mb-3 uppercase tracking-wider">
+            <h3 className="text-xs sm:text-sm font-semibold text-gray-500 dark:text-gray-400 mb-2 sm:mb-3 uppercase tracking-wider">
               Technologies
             </h3>
             <div className="flex flex-wrap gap-2">
               {technologies.map((tech, index) => (
                 <motion.span
                   key={index}
-                  className="px-4 py-2 glass rounded-full text-sm cursor-hover hover:bg-indigo-500/20 transition-colors"
+                  className="px-3 py-1.5 sm:px-4 sm:py-2 glass rounded-full text-xs sm:text-sm cursor-hover hover:bg-indigo-500/20 transition-colors"
                   whileHover={{ scale: 1.05 }}
                 >
                   {tech}

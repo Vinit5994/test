@@ -35,96 +35,98 @@ const ExperienceSection = () => {
   return (
     <section
       id="experience"
-      className="w-screen h-screen flex items-center justify-center px-8 md:px-16 relative overflow-y-auto"
+      className="w-screen h-screen flex items-center justify-center px-4 sm:px-6 md:px-8 lg:px-16 relative overflow-hidden"
     >
-      <div className="max-w-6xl w-full py-16">
+      <div className="max-w-6xl w-full h-full flex flex-col justify-center py-8 sm:py-12 md:py-16">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
-          className="text-center mb-16"
+          className="text-center mb-6 sm:mb-8 md:mb-12"
         >
-          <h2 className="text-5xl md:text-6xl font-bold mb-4">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-2 sm:mb-3 md:mb-4">
             <span className="gradient-text">Experience</span>
           </h2>
-          <p className="text-lg text-gray-400">
+          <p className="text-sm sm:text-base md:text-lg text-gray-500 dark:text-gray-400">
             Professional journey and contributions
           </p>
         </motion.div>
 
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          viewport={{ once: true }}
-          className="glass rounded-3xl p-8 md:p-10 mb-8"
-        >
-          {/* Company header */}
-          <div className="flex flex-col md:flex-row md:items-start md:justify-between mb-8 pb-6 border-b border-gray-700">
-            <div>
-              <div className="flex items-center gap-3 mb-3">
-                <div className="p-3 rounded-xl bg-gradient-to-br from-indigo-500 to-purple-500">
-                  <Briefcase className="w-6 h-6" />
+        <div className="flex-1 overflow-y-auto scrollbar-hide">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+            className="glass rounded-2xl sm:rounded-3xl p-4 sm:p-6 md:p-8 lg:p-10"
+          >
+            {/* Company header */}
+            <div className="flex flex-col md:flex-row md:items-start md:justify-between mb-4 sm:mb-6 md:mb-8 pb-4 sm:pb-6 border-b border-gray-300 dark:border-gray-700">
+              <div className="w-full">
+                <div className="flex items-center gap-2 sm:gap-3 mb-2 sm:mb-3">
+                  <div className="p-2 sm:p-3 rounded-lg sm:rounded-xl bg-gradient-to-br from-indigo-500 to-purple-500 shrink-0">
+                    <Briefcase className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6" />
+                  </div>
+                  <div className="min-w-0 flex-1">
+                    <h3 className="text-xl sm:text-2xl md:text-3xl font-bold truncate">{experience.company}</h3>
+                    <p className="text-indigo-500 dark:text-indigo-400 font-medium text-sm sm:text-base">{experience.role}</p>
+                  </div>
                 </div>
-                <div>
-                  <h3 className="text-3xl font-bold">{experience.company}</h3>
-                  <p className="text-indigo-400 font-medium">{experience.role}</p>
+                <div className="flex flex-wrap gap-2 sm:gap-4 text-gray-500 dark:text-gray-400 text-xs sm:text-sm">
+                  <div className="flex items-center gap-1 sm:gap-2">
+                    <MapPin className="w-3 h-3 sm:w-4 sm:h-4 shrink-0" />
+                    <span>{experience.location}</span>
+                  </div>
+                  <div className="flex items-center gap-1 sm:gap-2">
+                    <Calendar className="w-3 h-3 sm:w-4 sm:h-4 shrink-0" />
+                    <span>{experience.period}</span>
+                  </div>
                 </div>
+                <p className="text-gray-500 dark:text-gray-400 mt-2 text-xs sm:text-sm">
+                  Team: {experience.team}
+                </p>
               </div>
-              <div className="flex flex-wrap gap-4 text-gray-400 text-sm">
-                <div className="flex items-center gap-2">
-                  <MapPin className="w-4 h-4" />
-                  <span>{experience.location}</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <Calendar className="w-4 h-4" />
-                  <span>{experience.period}</span>
-                </div>
-              </div>
-              <p className="text-gray-400 mt-2 text-sm">
-                Team: {experience.team}
-              </p>
             </div>
-          </div>
 
-          {/* Projects */}
-          <div className="space-y-6">
-            {experience.projects.map((project, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, x: -30 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                viewport={{ once: true }}
-                className="relative pl-6 border-l-2 border-indigo-500/30 hover:border-indigo-500 transition-colors cursor-hover group"
-              >
-                <div className="absolute left-[-9px] top-2 w-4 h-4 rounded-full bg-indigo-500 group-hover:scale-125 transition-transform" />
+            {/* Projects */}
+            <div className="space-y-3 sm:space-y-4 md:space-y-6">
+              {experience.projects.map((project, index) => (
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, x: -30 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.5, delay: index * 0.1 }}
+                  viewport={{ once: true }}
+                  className="relative pl-4 sm:pl-6 border-l-2 border-indigo-500/30 hover:border-indigo-500 transition-colors cursor-hover group"
+                >
+                  <div className="absolute left-[-5px] sm:left-[-9px] top-1 sm:top-2 w-2 h-2 sm:w-4 sm:h-4 rounded-full bg-indigo-500 group-hover:scale-125 transition-transform" />
 
-                <div className="mb-3">
-                  <h4 className="text-xl font-bold mb-2 flex items-center gap-2 group-hover:text-indigo-400 transition-colors">
-                    {project.title}
-                    <ExternalLink className="w-4 h-4 opacity-0 group-hover:opacity-100 transition-opacity" />
-                  </h4>
-                  <p className="text-gray-400 leading-relaxed">
-                    {project.description}
-                  </p>
-                </div>
+                  <div className="mb-2 sm:mb-3">
+                    <h4 className="text-base sm:text-lg md:text-xl font-bold mb-1 sm:mb-2 flex items-center gap-2 group-hover:text-indigo-500 dark:group-hover:text-indigo-400 transition-colors">
+                      {project.title}
+                      <ExternalLink className="w-3 h-3 sm:w-4 sm:h-4 opacity-0 group-hover:opacity-100 transition-opacity shrink-0" />
+                    </h4>
+                    <p className="text-xs sm:text-sm md:text-base text-gray-600 dark:text-gray-400 leading-relaxed line-clamp-3 sm:line-clamp-none">
+                      {project.description}
+                    </p>
+                  </div>
 
-                <div className="flex flex-wrap gap-2">
-                  {project.tags.map((tag, tagIndex) => (
-                    <span
-                      key={tagIndex}
-                      className="px-3 py-1 text-xs font-medium rounded-full bg-indigo-500/10 text-indigo-400 border border-indigo-500/20"
-                    >
-                      {tag}
-                    </span>
-                  ))}
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        </motion.div>
+                  <div className="flex flex-wrap gap-1 sm:gap-2">
+                    {project.tags.map((tag, tagIndex) => (
+                      <span
+                        key={tagIndex}
+                        className="px-2 sm:px-3 py-0.5 sm:py-1 text-[10px] sm:text-xs font-medium rounded-full bg-indigo-500/10 text-indigo-500 dark:text-indigo-400 border border-indigo-500/20"
+                      >
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+          </motion.div>
+        </div>
       </div>
     </section>
   );
