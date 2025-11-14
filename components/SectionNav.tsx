@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { createPortal } from 'react-dom';
 import { motion } from 'framer-motion';
 import { gsap } from 'gsap';
@@ -22,10 +22,25 @@ const SectionNav = () => {
   const [activeSection, setActiveSection] = useState(0);
   const [mounted, setMounted] = useState(false);
   const [isHovered, setIsHovered] = useState(false);
+  const hoverTimeoutRef = useRef<NodeJS.Timeout | null>(null);
 
   useEffect(() => {
     setMounted(true);
   }, []);
+
+  const handleMouseEnter = () => {
+    if (hoverTimeoutRef.current) {
+      clearTimeout(hoverTimeoutRef.current);
+    }
+    setIsHovered(true);
+  };
+
+  const handleMouseLeave = () => {
+    // Add delay before collapsing
+    hoverTimeoutRef.current = setTimeout(() => {
+      setIsHovered(false);
+    }, 300); // 300ms delay
+  };
 
   useEffect(() => {
     if (!mounted) return;
@@ -86,8 +101,8 @@ const SectionNav = () => {
   return createPortal(
     <div
       className="fixed left-0 top-1/2 -translate-y-1/2 z-50 hidden lg:block"
-      onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
       style={{
         width: '280px', // Large hover area to include dots and labels
         height: '500px',
@@ -153,10 +168,10 @@ const SectionNav = () => {
                   }}
                   style={{ pointerEvents: 'auto' }}
                 >
-                  <div className={`glass px-4 py-2 rounded-xl text-sm font-medium transition-all duration-300 ${
+                  <div className={`px-2 py-1 text-base font-semibold transition-all duration-300 ${
                     activeSection === index
-                      ? 'bg-indigo-400/20 text-indigo-400 border border-indigo-400/30'
-                      : 'text-foreground border border-border/30'
+                      ? 'text-indigo-400'
+                      : 'text-foreground'
                   }`}>
                     {section.label}
                   </div>
