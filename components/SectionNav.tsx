@@ -21,6 +21,7 @@ const sections = [
 const SectionNav = () => {
   const [activeSection, setActiveSection] = useState(0);
   const [mounted, setMounted] = useState(false);
+  const [isHovered, setIsHovered] = useState(false);
 
   useEffect(() => {
     setMounted(true);
@@ -70,44 +71,78 @@ const SectionNav = () => {
     return null;
   }
 
+  // Calculate half-circle positions for dots
+  const getHalfCirclePosition = (index: number, total: number) => {
+    const radius = 80; // Radius of the half circle
+    const angleStep = Math.PI / (total - 1); // Divide 180 degrees by number of dots
+    const angle = index * angleStep - Math.PI / 2; // Start from top (-90 degrees)
+
+    return {
+      x: Math.cos(angle) * radius,
+      y: Math.sin(angle) * radius,
+    };
+  };
+
   return createPortal(
-    <div className="fixed left-6 md:left-8 top-1/2 -translate-y-1/2 z-50 hidden lg:block">
-      <nav className="flex flex-col gap-4">
-        {sections.map((section, index) => (
-          <button
-            key={section.id}
-            onClick={() => scrollToSection(index)}
-            className="group relative cursor-hover"
-            aria-label={`Go to ${section.label}`}
-          >
-            {/* Dot indicator */}
-            <div className="relative">
-              <div
-                className={`w-3 h-3 rounded-full border-2 transition-all duration-300 ${
-                  activeSection === index
-                    ? 'border-indigo-400 bg-indigo-400 scale-125'
-                    : 'border-gray-400 bg-transparent hover:border-indigo-400 hover:scale-110'
-                }`}
-              />
+    <div
+      className="fixed left-6 md:left-8 top-1/2 -translate-y-1/2 z-50 hidden lg:block"
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+    >
+      <nav className="relative flex flex-col gap-4">
+        {sections.map((section, index) => {
+          const position = getHalfCirclePosition(index, sections.length);
 
-              {/* Active indicator ring */}
-              {activeSection === index && (
+          return (
+            <motion.button
+              key={section.id}
+              onClick={() => scrollToSection(index)}
+              className="group relative cursor-hover"
+              aria-label={`Go to ${section.label}`}
+              animate={isHovered ? {
+                x: position.x,
+                y: position.y,
+              } : {
+                x: 0,
+                y: 0,
+              }}
+              transition={{
+                type: 'spring',
+                stiffness: 200,
+                damping: 20,
+                mass: 0.8,
+              }}
+            >
+              {/* Dot indicator */}
+              <div className="relative">
                 <motion.div
-                  layoutId="activeSection"
-                  className="absolute inset-0 -m-1 border-2 border-indigo-400/50 rounded-full"
-                  transition={{ type: 'spring', stiffness: 300, damping: 30 }}
+                  className={`w-3 h-3 rounded-full border-2 transition-all duration-300 ${
+                    activeSection === index
+                      ? 'border-indigo-400 bg-indigo-400 scale-125'
+                      : 'border-gray-400 bg-transparent hover:border-indigo-400 hover:scale-110'
+                  }`}
+                  whileHover={{ scale: 1.3 }}
                 />
-              )}
-            </div>
 
-            {/* Label tooltip */}
-            <div className="absolute left-6 top-1/2 -translate-y-1/2 opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none">
-              <div className="whitespace-nowrap px-3 py-1 bg-gray-900 dark:bg-gray-100 text-white dark:text-gray-900 text-sm font-medium rounded-lg">
-                {section.label}
+                {/* Active indicator ring */}
+                {activeSection === index && (
+                  <motion.div
+                    layoutId="activeSection"
+                    className="absolute inset-0 -m-1 border-2 border-indigo-400/50 rounded-full"
+                    transition={{ type: 'spring', stiffness: 300, damping: 30 }}
+                  />
+                )}
               </div>
-            </div>
-          </button>
-        ))}
+
+              {/* Label tooltip - only show on individual dot hover */}
+              <div className="absolute left-8 top-1/2 -translate-y-1/2 opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none whitespace-nowrap z-10">
+                <div className="px-4 py-2 bg-gray-900 dark:bg-gray-100 text-white dark:text-gray-900 text-sm font-medium rounded-lg shadow-lg">
+                  {section.label}
+                </div>
+              </div>
+            </motion.button>
+          );
+        })}
       </nav>
     </div>,
     document.body
