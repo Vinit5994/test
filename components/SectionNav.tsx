@@ -85,79 +85,87 @@ const SectionNav = () => {
 
   return createPortal(
     <div
-      className="fixed left-6 md:left-8 top-1/2 -translate-y-1/2 z-50 hidden lg:block"
+      className="fixed left-0 top-1/2 -translate-y-1/2 z-50 hidden lg:block"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
+      style={{
+        width: '280px', // Large hover area to include dots and labels
+        height: '500px',
+        pointerEvents: 'none',
+      }}
     >
-      <nav className="relative flex flex-col gap-4" style={{ pointerEvents: 'auto' }}>
-        {sections.map((section, index) => {
-          const position = getHalfCirclePosition(index, sections.length);
+      <div className="absolute left-6 md:left-8 top-1/2 -translate-y-1/2">
+        <nav className="relative flex flex-col gap-4" style={{ pointerEvents: 'auto' }}>
+          {sections.map((section, index) => {
+            const position = getHalfCirclePosition(index, sections.length);
 
-          return (
-            <motion.button
-              key={section.id}
-              onClick={() => scrollToSection(index)}
-              className="group relative cursor-hover z-50"
-              aria-label={`Go to ${section.label}`}
-              style={{ pointerEvents: 'auto' }}
-              animate={isHovered ? {
-                x: position.x,
-                y: position.y,
-              } : {
-                x: 0,
-                y: 0,
-              }}
-              transition={{
-                type: 'spring',
-                stiffness: 200,
-                damping: 20,
-                mass: 0.8,
-              }}
-            >
-              {/* Dot indicator */}
-              <div className="relative" style={{ pointerEvents: 'auto' }}>
-                <motion.div
-                  className={`w-3 h-3 rounded-full border-2 transition-all duration-300 ${
-                    activeSection === index
-                      ? 'border-indigo-400 bg-indigo-400 scale-125'
-                      : 'border-gray-400 bg-transparent hover:border-indigo-400 hover:scale-110'
-                  }`}
-                  whileHover={{ scale: 1.3 }}
-                />
-
-                {/* Active indicator ring */}
-                {activeSection === index && (
-                  <motion.div
-                    layoutId="activeSection"
-                    className="absolute inset-0 -m-1 border-2 border-indigo-400/50 rounded-full"
-                    transition={{ type: 'spring', stiffness: 300, damping: 30 }}
-                  />
-                )}
-              </div>
-
-              {/* Label - show when navigation area is hovered */}
-              <motion.div
-                className="absolute left-8 top-1/2 -translate-y-1/2 pointer-events-none whitespace-nowrap z-10"
-                initial={{ opacity: 0, x: -10 }}
-                animate={isHovered ? { opacity: 1, x: 0 } : { opacity: 0, x: -10 }}
+            return (
+              <motion.button
+                key={section.id}
+                onClick={() => scrollToSection(index)}
+                className="group relative cursor-hover z-50"
+                aria-label={`Go to ${section.label}`}
+                style={{ pointerEvents: 'auto' }}
+                animate={isHovered ? {
+                  x: position.x,
+                  y: position.y,
+                } : {
+                  x: 0,
+                  y: 0,
+                }}
                 transition={{
-                  delay: index * 0.05,
-                  duration: 0.3,
-                  ease: 'easeOut'
+                  type: 'spring',
+                  stiffness: 200,
+                  damping: 20,
+                  mass: 0.8,
                 }}
               >
-                <div className={`glass px-4 py-2 rounded-xl text-sm font-medium transition-all duration-300 ${
-                  activeSection === index
-                    ? 'bg-indigo-400/20 text-indigo-400 border border-indigo-400/30'
-                    : 'text-foreground border border-border/30'
-                }`}>
-                  {section.label}
+                {/* Dot indicator */}
+                <div className="relative" style={{ pointerEvents: 'auto' }}>
+                  <motion.div
+                    className={`w-3 h-3 rounded-full border-2 transition-all duration-300 ${
+                      activeSection === index
+                        ? 'border-indigo-400 bg-indigo-400 scale-125'
+                        : 'border-gray-400 bg-transparent hover:border-indigo-400 hover:scale-110'
+                    }`}
+                    whileHover={{ scale: 1.3 }}
+                  />
+
+                  {/* Active indicator ring */}
+                  {activeSection === index && (
+                    <motion.div
+                      layoutId="activeSection"
+                      className="absolute inset-0 -m-1 border-2 border-indigo-400/50 rounded-full"
+                      transition={{ type: 'spring', stiffness: 300, damping: 30 }}
+                    />
+                  )}
                 </div>
-              </motion.div>
-            </motion.button>
-          );
-        })}
-      </nav>
+
+                {/* Label - show when navigation area is hovered */}
+                <motion.div
+                  className="absolute left-8 top-1/2 -translate-y-1/2 whitespace-nowrap z-10"
+                  initial={{ opacity: 0, x: -10 }}
+                  animate={isHovered ? { opacity: 1, x: 0 } : { opacity: 0, x: -10 }}
+                  transition={{
+                    delay: index * 0.05,
+                    duration: 0.3,
+                    ease: 'easeOut'
+                  }}
+                  style={{ pointerEvents: 'auto' }}
+                >
+                  <div className={`glass px-4 py-2 rounded-xl text-sm font-medium transition-all duration-300 ${
+                    activeSection === index
+                      ? 'bg-indigo-400/20 text-indigo-400 border border-indigo-400/30'
+                      : 'text-foreground border border-border/30'
+                  }`}>
+                    {section.label}
+                  </div>
+                </motion.div>
+              </motion.button>
+            );
+          })}
+        </nav>
+      </div>
     </div>,
     document.body
   );
