@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useState } from 'react';
+import { createPortal } from 'react-dom';
 import { motion } from 'framer-motion';
 
 const LoadingScreen = () => {
@@ -39,7 +40,7 @@ const LoadingScreen = () => {
 
   if (!mounted || !isLoading) return null;
 
-  return (
+  return createPortal(
     <motion.div
       initial={{ opacity: 1 }}
       exit={{ opacity: 0 }}
@@ -172,7 +173,8 @@ const LoadingScreen = () => {
         animate={{ scale: 1, opacity: 0.1 }}
         transition={{ duration: 0.8, delay: 0.6 }}
       />
-    </motion.div>
+    </motion.div>,
+    document.body
   );
 };
 
