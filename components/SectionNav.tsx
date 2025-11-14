@@ -134,12 +134,21 @@ const SectionNav = () => {
                 )}
               </div>
 
-              {/* Label tooltip - only show on individual dot hover */}
-              <div className="absolute left-8 top-1/2 -translate-y-1/2 opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none whitespace-nowrap z-10">
+              {/* Label tooltip - show when navigation area is hovered */}
+              <motion.div
+                className="absolute left-8 top-1/2 -translate-y-1/2 pointer-events-none whitespace-nowrap z-10"
+                initial={{ opacity: 0, x: -10 }}
+                animate={isHovered ? { opacity: 1, x: 0 } : { opacity: 0, x: -10 }}
+                transition={{
+                  delay: index * 0.05,
+                  duration: 0.3,
+                  ease: 'easeOut'
+                }}
+              >
                 <div className="px-4 py-2 bg-gray-900 dark:bg-gray-100 text-white dark:text-gray-900 text-sm font-medium rounded-lg shadow-lg">
                   {section.label}
                 </div>
-              </div>
+              </motion.div>
             </motion.button>
           );
         })}
