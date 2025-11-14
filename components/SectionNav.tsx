@@ -89,7 +89,7 @@ const SectionNav = () => {
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
-      <nav className="relative flex flex-col gap-4">
+      <nav className="relative flex flex-col gap-4" style={{ pointerEvents: 'auto' }}>
         {sections.map((section, index) => {
           const position = getHalfCirclePosition(index, sections.length);
 
@@ -97,8 +97,9 @@ const SectionNav = () => {
             <motion.button
               key={section.id}
               onClick={() => scrollToSection(index)}
-              className="group relative cursor-hover"
+              className="group relative cursor-hover z-50"
               aria-label={`Go to ${section.label}`}
+              style={{ pointerEvents: 'auto' }}
               animate={isHovered ? {
                 x: position.x,
                 y: position.y,
@@ -114,7 +115,7 @@ const SectionNav = () => {
               }}
             >
               {/* Dot indicator */}
-              <div className="relative">
+              <div className="relative" style={{ pointerEvents: 'auto' }}>
                 <motion.div
                   className={`w-3 h-3 rounded-full border-2 transition-all duration-300 ${
                     activeSection === index
@@ -134,7 +135,7 @@ const SectionNav = () => {
                 )}
               </div>
 
-              {/* Label tooltip - show when navigation area is hovered */}
+              {/* Label - show when navigation area is hovered */}
               <motion.div
                 className="absolute left-8 top-1/2 -translate-y-1/2 pointer-events-none whitespace-nowrap z-10"
                 initial={{ opacity: 0, x: -10 }}
@@ -145,7 +146,11 @@ const SectionNav = () => {
                   ease: 'easeOut'
                 }}
               >
-                <div className="px-4 py-2 bg-gray-900 dark:bg-gray-100 text-white dark:text-gray-900 text-sm font-medium rounded-lg shadow-lg">
+                <div className={`glass px-4 py-2 rounded-xl text-sm font-medium transition-all duration-300 ${
+                  activeSection === index
+                    ? 'bg-indigo-400/20 text-indigo-400 border border-indigo-400/30'
+                    : 'text-foreground border border-border/30'
+                }`}>
                   {section.label}
                 </div>
               </motion.div>
