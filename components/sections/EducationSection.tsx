@@ -2,9 +2,6 @@
 
 import { motion } from 'framer-motion';
 import { GraduationCap, MapPin, Calendar } from 'lucide-react';
-import ScrollIndicator from '../ScrollIndicator';
-import StoryTransition from '../StoryTransition';
-import { StarDoodle, RocketDoodle } from '../DoodleElements';
 
 const EducationSection = () => {
   const education = [
@@ -117,20 +114,6 @@ const EducationSection = () => {
           </div>
         </div>
       </div>
-
-      {/* Doodle Art Elements */}
-      <StarDoodle className="absolute top-24 right-24 opacity-60" />
-      <RocketDoodle className="absolute bottom-24 left-24 opacity-50" />
-
-      {/* Story Transition */}
-      <StoryTransition
-        story="With a solid academic foundation in Information Technology, I launched into the professional world. Ready to see how theory became practice?"
-        nextSection="Experience"
-        position="right"
-      />
-
-      {/* Scroll Indicator */}
-      <ScrollIndicator message="Explore my experience" position="bottom" />
     </section>
   );
 };

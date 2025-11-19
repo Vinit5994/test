@@ -2,7 +2,7 @@
 
 import { motion } from 'framer-motion';
 import { Mail, Phone, Github, Linkedin, Send, MessageSquare } from 'lucide-react';
-import { RocketDoodle, HeartDoodle, CodeDoodle } from '../DoodleElements';
+import { HeartDoodle } from '../DoodleElements';
 
 const ContactSection = () => {
   const contactMethods = [
@@ -177,10 +177,8 @@ const ContactSection = () => {
         </motion.div>
       </div>
 
-      {/* Doodle Art Elements */}
-      <RocketDoodle className="absolute top-20 left-20 opacity-50" />
-      <HeartDoodle className="absolute top-32 right-24 opacity-60" />
-      <CodeDoodle className="absolute bottom-24 left-1/3 opacity-50" />
+      {/* Subtle Doodle */}
+      <HeartDoodle className="absolute top-32 right-24 opacity-25" />
     </section>
   );
 };

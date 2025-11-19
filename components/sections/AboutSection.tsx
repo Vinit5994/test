@@ -2,9 +2,6 @@
 
 import { motion } from 'framer-motion';
 import { Code2, Database, Globe, Layers } from 'lucide-react';
-import ScrollIndicator from '../ScrollIndicator';
-import StoryTransition from '../StoryTransition';
-import { LightbulbDoodle, CodeDoodle } from '../DoodleElements';
 
 const AboutSection = () => {
   const languages = ['C++', 'JavaScript', 'TypeScript', 'Python'];
@@ -169,20 +166,6 @@ const AboutSection = () => {
           </div>
         </motion.div>
       </div>
-
-      {/* Doodle Art Elements */}
-      <LightbulbDoodle className="absolute top-20 right-20 opacity-50" />
-      <CodeDoodle className="absolute bottom-32 left-16 opacity-60" />
-
-      {/* Story Transition */}
-      <StoryTransition
-        story="From mastering programming languages to building full-stack solutions, my toolkit is diverse. Let's explore the academic foundation that shaped this expertise..."
-        nextSection="Education"
-        position="right"
-      />
-
-      {/* Scroll Indicator */}
-      <ScrollIndicator message="Continue to Education" position="bottom" />
     </section>
   );
 };

@@ -2,9 +2,7 @@
 
 import { motion } from 'framer-motion';
 import { ArrowRight, Code2, Mail, Phone, Sparkles } from 'lucide-react';
-import ScrollIndicator from '../ScrollIndicator';
-import StoryTransition from '../StoryTransition';
-import { StarDoodle, RocketDoodle } from '../DoodleElements';
+import { StarDoodle } from '../DoodleElements';
 
 const HeroSection = () => {
   const containerVariants = {
@@ -131,19 +129,8 @@ const HeroSection = () => {
 
       </motion.div>
 
-      {/* Doodle Art Elements */}
-      <StarDoodle className="absolute top-20 right-20 opacity-60" />
-      <RocketDoodle className="absolute bottom-20 left-20 opacity-50" />
-
-      {/* Story Transition */}
-      <StoryTransition
-        story="Welcome to my journey! Let me take you through my world of Web3 development, where blockchain meets innovation..."
-        nextSection="About Me"
-        position="right"
-      />
-
-      {/* Enhanced Scroll Indicator */}
-      <ScrollIndicator message="Swipe to explore my story" position="bottom" />
+      {/* Subtle Doodle Art */}
+      <StarDoodle className="absolute top-20 right-20 opacity-30" />
     </section>
   );
 };

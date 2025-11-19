@@ -2,9 +2,7 @@
 
 import { motion } from 'framer-motion';
 import { Briefcase, MapPin, Calendar, ExternalLink } from 'lucide-react';
-import ScrollIndicator from '../ScrollIndicator';
-import StoryTransition from '../StoryTransition';
-import { RocketDoodle, LightbulbDoodle } from '../DoodleElements';
+import { RocketDoodle } from '../DoodleElements';
 
 const ExperienceSection = () => {
   const experience = {
@@ -132,19 +130,8 @@ const ExperienceSection = () => {
         </div>
       </div>
 
-      {/* Doodle Art Elements */}
-      <RocketDoodle className="absolute top-20 right-20 opacity-60" />
-      <LightbulbDoodle className="absolute bottom-28 left-16 opacity-50" />
-
-      {/* Story Transition */}
-      <StoryTransition
-        story="From building AI-powered governance tools to crafting DAO platforms, my professional journey has been about turning innovative ideas into reality. Now, let's dive into the projects I'm most proud of..."
-        nextSection="Projects"
-        position="right"
-      />
-
-      {/* Scroll Indicator */}
-      <ScrollIndicator message="See my projects" position="bottom" />
+      {/* Subtle Doodle */}
+      <RocketDoodle className="absolute top-20 right-20 opacity-25" />
     </section>
   );
 };
