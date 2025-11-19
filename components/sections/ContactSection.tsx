@@ -93,9 +93,9 @@ const ContactSection = () => {
             Have a project in mind or want to collaborate? Feel free to reach out
             through any of these channels.
           </p>
-          <p className="text-xs sm:text-sm md:text-base lg:text-lg italic text-indigo-600 dark:text-indigo-400 opacity-80 max-w-2xl mx-auto px-4">
+          {/* <p className="text-xs sm:text-sm md:text-base lg:text-lg italic text-indigo-600 dark:text-indigo-400 opacity-80 max-w-2xl mx-auto px-4">
             Let&apos;s build something amazing together — the journey starts with a conversation
-          </p>
+          </p> */}
         </motion.div>
 
         <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 md:gap-6 mb-6 sm:mb-8 md:mb-12 overflow-y-auto scrollbar-hide max-h-[45vh] sm:max-h-[50vh]">

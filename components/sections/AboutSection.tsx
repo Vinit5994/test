@@ -105,9 +105,7 @@ const AboutSection = () => {
             <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-3">
               About <span className="gradient-text">Me</span>
             </h2>
-            <p className="text-sm sm:text-base md:text-lg italic text-indigo-600 dark:text-indigo-400 opacity-80">
-              From code to Web3 — the toolkit behind the innovation
-            </p>
+
           </div>
 
           <p className="text-xs sm:text-sm md:text-base lg:text-lg text-gray-600 dark:text-gray-400 mb-4 sm:mb-6 md:mb-8 leading-relaxed">
