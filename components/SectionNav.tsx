@@ -73,12 +73,17 @@ const SectionNav = () => {
   }, [mounted]);
 
   const scrollToSection = (index: number) => {
+    // For horizontal scroll, each section is 100vh tall in vertical scroll
+    // Scroll to that section's vertical position
     const sectionHeight = window.innerHeight;
     const scrollAmount = sectionHeight * index;
+
     window.scrollTo({
       top: scrollAmount,
       behavior: 'smooth',
     });
+
+    // Update active section immediately for better UX
     setActiveSection(index);
   };
 
@@ -168,10 +173,10 @@ const SectionNav = () => {
                   }}
                   style={{ pointerEvents: 'auto' }}
                 >
-                  <div className={`px-2 py-1 text-base font-semibold transition-all duration-300 ${
+                  <div className={`px-2 py-1 text-base font-semibold transition-all duration-300 hover:scale-105 ${
                     activeSection === index
                       ? 'text-indigo-400'
-                      : 'text-foreground'
+                      : 'text-foreground hover:text-indigo-400'
                   }`}>
                     {section.label}
                   </div>
