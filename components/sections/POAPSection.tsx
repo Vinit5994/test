@@ -2,7 +2,6 @@
 
 import { motion } from 'framer-motion';
 import { Award, ExternalLink } from 'lucide-react';
-import { HeartDoodle } from '../DoodleElements';
 
 const POAPSection = () => {
   const poapAddress = '0x256139dbd80836aa14ff0481f3883cfa3379da00';
@@ -51,12 +50,11 @@ const POAPSection = () => {
       >
         {/* Section Header */}
         <motion.div variants={itemVariants} className="text-center mb-8 md:mb-12">
-          <div className="inline-flex items-center gap-2 sm:gap-3 mb-4 md:mb-6">
-            <Award className="w-6 h-6 md:w-8 md:h-8 text-indigo-400 flex-shrink-0" />
+          <div className="inline-flex items-center gap-2 mb-4 md:mb-6">
+            <Award className="w-6 h-6 md:w-8 md:h-8 text-indigo-400" />
             <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold gradient-text">
               POAP Collection
             </h2>
-            <HeartDoodle className="w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 opacity-60 flex-shrink-0" />
           </div>
           <p className="text-sm sm:text-base md:text-lg text-gray-600 dark:text-gray-400 mb-2 max-w-2xl mx-auto px-4">
             Proof of Attendance Protocol - My journey in Web3 events and communities

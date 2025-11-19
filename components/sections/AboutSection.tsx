@@ -2,7 +2,6 @@
 
 import { motion } from 'framer-motion';
 import { Code2, Database, Globe, Layers } from 'lucide-react';
-import { LightbulbDoodle } from '../DoodleElements';
 
 const AboutSection = () => {
   const languages = ['C++', 'JavaScript', 'TypeScript', 'Python'];
@@ -103,13 +102,10 @@ const AboutSection = () => {
           className="max-h-[75vh] sm:max-h-[80vh] overflow-y-auto scrollbar-hide"
         >
           <div className="mb-6 sm:mb-8">
-            <div className="flex items-center gap-3 mb-3">
-              <LightbulbDoodle className="w-8 h-8 sm:w-10 sm:h-10 opacity-60 flex-shrink-0" />
-              <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold">
-                About <span className="gradient-text">Me</span>
-              </h2>
-            </div>
-            <p className="text-sm sm:text-base md:text-lg italic text-indigo-600 dark:text-indigo-400 opacity-80 pl-0 sm:pl-14">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-3">
+              About <span className="gradient-text">Me</span>
+            </h2>
+            <p className="text-sm sm:text-base md:text-lg italic text-indigo-600 dark:text-indigo-400 opacity-80">
               From code to Web3 — the toolkit behind the innovation
             </p>
           </div>

@@ -2,7 +2,6 @@
 
 import { motion } from 'framer-motion';
 import { Briefcase, MapPin, Calendar, ExternalLink } from 'lucide-react';
-import { RocketDoodle } from '../DoodleElements';
 
 const ExperienceSection = () => {
   const experience = {
@@ -46,12 +45,9 @@ const ExperienceSection = () => {
           viewport={{ once: true }}
           className="text-center mb-6 sm:mb-8 md:mb-12"
         >
-          <div className="flex items-center justify-center gap-3 mb-2 sm:mb-3 md:mb-4">
-            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold">
-              <span className="gradient-text">Experience</span>
-            </h2>
-            <RocketDoodle className="w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 opacity-60 flex-shrink-0" />
-          </div>
+          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-2 sm:mb-3 md:mb-4">
+            <span className="gradient-text">Experience</span>
+          </h2>
           <p className="text-sm sm:text-base md:text-lg text-gray-500 dark:text-gray-400 mb-2">
             Professional journey and contributions
           </p>
@@ -135,9 +131,6 @@ const ExperienceSection = () => {
           </motion.div>
         </div>
       </div>
-
-      {/* Subtle Doodle */}
-      <RocketDoodle className="absolute top-20 right-20 opacity-25" />
     </section>
   );
 };

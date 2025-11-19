@@ -2,7 +2,6 @@
 
 import { motion } from 'framer-motion';
 import { ArrowRight, Code2, Mail, Phone, Sparkles } from 'lucide-react';
-import { StarDoodle } from '../DoodleElements';
 
 const HeroSection = () => {
   const containerVariants = {
@@ -128,9 +127,6 @@ const HeroSection = () => {
         </motion.div>
 
       </motion.div>
-
-      {/* Subtle Doodle Art */}
-      <StarDoodle className="absolute top-20 right-20 opacity-30" />
     </section>
   );
 };
