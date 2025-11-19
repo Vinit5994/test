@@ -2,6 +2,7 @@
 
 import { motion } from 'framer-motion';
 import { GraduationCap, MapPin, Calendar } from 'lucide-react';
+import { StarDoodle } from '../DoodleElements';
 
 const EducationSection = () => {
   const education = [
@@ -42,11 +43,17 @@ const EducationSection = () => {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <h2 className="text-5xl md:text-6xl font-bold mb-4">
-            <span className="gradient-text">Education</span>
-          </h2>
-          <p className="text-lg text-gray-400">
+          <div className="flex items-center justify-center gap-3 mb-4">
+            <h2 className="text-5xl md:text-6xl font-bold">
+              <span className="gradient-text">Education</span>
+            </h2>
+            <StarDoodle className="w-10 h-10 md:w-12 md:h-12 opacity-60 flex-shrink-0" />
+          </div>
+          <p className="text-base md:text-lg text-gray-500 dark:text-gray-400 mb-2">
             Academic journey and qualifications
+          </p>
+          <p className="text-sm md:text-base italic text-indigo-600 dark:text-indigo-400 opacity-80">
+            Building the foundation — where theory met curiosity
           </p>
         </motion.div>
 

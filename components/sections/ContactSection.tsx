@@ -87,12 +87,18 @@ const ContactSection = () => {
             <span className="text-xs sm:text-sm font-medium">Let&apos;s Connect</span>
           </motion.div>
 
-          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-bold mb-3 sm:mb-4 md:mb-6">
-            Get In <span className="gradient-text">Touch</span>
-          </h2>
-          <p className="text-sm sm:text-base md:text-lg lg:text-xl text-gray-400 max-w-2xl mx-auto px-4">
+          <div className="flex items-center justify-center gap-3 mb-3 sm:mb-4 md:mb-6">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-bold">
+              Get In <span className="gradient-text">Touch</span>
+            </h2>
+            <HeartDoodle className="w-10 h-10 sm:w-12 sm:h-12 md:w-16 md:h-16 lg:w-20 lg:h-20 opacity-60 flex-shrink-0" />
+          </div>
+          <p className="text-sm sm:text-base md:text-lg lg:text-xl text-gray-500 dark:text-gray-400 mb-2 max-w-2xl mx-auto px-4">
             Have a project in mind or want to collaborate? Feel free to reach out
             through any of these channels.
+          </p>
+          <p className="text-xs sm:text-sm md:text-base lg:text-lg italic text-indigo-600 dark:text-indigo-400 opacity-80 max-w-2xl mx-auto px-4">
+            Let&apos;s build something amazing together — the journey starts with a conversation
           </p>
         </motion.div>
 

@@ -2,6 +2,7 @@
 
 import { motion } from 'framer-motion';
 import { Rocket, Shield, ExternalLink, Github } from 'lucide-react';
+import { CodeDoodle } from '../DoodleElements';
 
 const ProjectsSection = () => {
   const projects = [
@@ -42,11 +43,17 @@ const ProjectsSection = () => {
           viewport={{ once: true }}
           className="text-center mb-6 sm:mb-8 md:mb-12"
         >
-          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-2 sm:mb-3 md:mb-4">
-            Featured <span className="gradient-text">Projects</span>
-          </h2>
-          <p className="text-sm sm:text-base md:text-lg text-gray-400">
+          <div className="flex items-center justify-center gap-3 mb-2 sm:mb-3 md:mb-4">
+            <CodeDoodle className="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 opacity-60 flex-shrink-0" />
+            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold">
+              Featured <span className="gradient-text">Projects</span>
+            </h2>
+          </div>
+          <p className="text-sm sm:text-base md:text-lg text-gray-500 dark:text-gray-400 mb-2">
             Building the future of decentralized applications
+          </p>
+          <p className="text-xs sm:text-sm md:text-base italic text-indigo-600 dark:text-indigo-400 opacity-80">
+            Decentralization meets fairness — building transparent blockchain solutions
           </p>
         </motion.div>
 

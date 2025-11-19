@@ -46,11 +46,17 @@ const ExperienceSection = () => {
           viewport={{ once: true }}
           className="text-center mb-6 sm:mb-8 md:mb-12"
         >
-          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-2 sm:mb-3 md:mb-4">
-            <span className="gradient-text">Experience</span>
-          </h2>
-          <p className="text-sm sm:text-base md:text-lg text-gray-500 dark:text-gray-400">
+          <div className="flex items-center justify-center gap-3 mb-2 sm:mb-3 md:mb-4">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold">
+              <span className="gradient-text">Experience</span>
+            </h2>
+            <RocketDoodle className="w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 opacity-60 flex-shrink-0" />
+          </div>
+          <p className="text-sm sm:text-base md:text-lg text-gray-500 dark:text-gray-400 mb-2">
             Professional journey and contributions
+          </p>
+          <p className="text-xs sm:text-sm md:text-base italic text-indigo-600 dark:text-indigo-400 opacity-80">
+            Turning ideas into reality — Web3, AI, and decentralized innovation
           </p>
         </motion.div>
 
