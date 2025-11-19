@@ -36,10 +36,10 @@ const SectionNav = () => {
   };
 
   const handleMouseLeave = () => {
-    // Add delay before collapsing
+    // Add longer delay before collapsing for effortless navigation
     hoverTimeoutRef.current = setTimeout(() => {
       setIsHovered(false);
-    }, 300); // 300ms delay
+    }, 1000); // 1000ms (1 second) delay - plenty of time to decide
   };
 
   useEffect(() => {
