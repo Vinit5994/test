@@ -41,13 +41,18 @@ const MobileNav = () => {
 
     // Small delay to let menu close animation start
     setTimeout(() => {
-      // Calculate scroll amount for horizontal scroll
-      // Each section is 100vh, so we scroll by viewport height * index
-      const sectionHeight = window.innerHeight;
-      const scrollAmount = sectionHeight * index;
+      // Calculate correct scroll position for horizontal scroll
+      const sectionCount = sections.length; // 7 sections
+      const viewportWidth = window.innerWidth;
+
+      // This matches the calculation in HorizontalScroll component
+      const scrollDistance = viewportWidth * (sectionCount - 1);
+
+      // Calculate target scroll position for this section
+      const targetScroll = scrollDistance * (index / (sectionCount - 1));
 
       window.scrollTo({
-        top: scrollAmount,
+        top: targetScroll,
         behavior: 'smooth',
       });
     }, 100);

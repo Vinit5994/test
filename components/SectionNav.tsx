@@ -73,13 +73,19 @@ const SectionNav = () => {
   }, [mounted]);
 
   const scrollToSection = (index: number) => {
-    // For horizontal scroll, each section is 100vh tall in vertical scroll
-    // Scroll to that section's vertical position
-    const sectionHeight = window.innerHeight;
-    const scrollAmount = sectionHeight * index;
+    // Calculate correct scroll position for horizontal scroll
+    const sectionCount = sections.length; // 7 sections
+    const viewportWidth = window.innerWidth;
+
+    // This matches the calculation in HorizontalScroll component
+    const scrollDistance = viewportWidth * (sectionCount - 1);
+
+    // Calculate target scroll position for this section
+    // Progress through sections: 0 to 6 becomes 0/6, 1/6, 2/6, etc.
+    const targetScroll = scrollDistance * (index / (sectionCount - 1));
 
     window.scrollTo({
-      top: scrollAmount,
+      top: targetScroll,
       behavior: 'smooth',
     });
 
