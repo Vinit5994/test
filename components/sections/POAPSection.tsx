@@ -2,6 +2,9 @@
 
 import { motion } from 'framer-motion';
 import { Award, ExternalLink } from 'lucide-react';
+import ScrollIndicator from '../ScrollIndicator';
+import StoryTransition from '../StoryTransition';
+import { HeartDoodle, StarDoodle } from '../DoodleElements';
 
 const POAPSection = () => {
   const poapAddress = '0x256139dbd80836aa14ff0481f3883cfa3379da00';
@@ -103,6 +106,20 @@ const POAPSection = () => {
           </p>
         </motion.div>
       </motion.div>
+
+      {/* Doodle Art Elements */}
+      <HeartDoodle className="absolute top-24 left-20 opacity-60" />
+      <StarDoodle className="absolute bottom-28 right-28 opacity-50" />
+
+      {/* Story Transition */}
+      <StoryTransition
+        story="Each POAP represents a moment in my Web3 journey—hackathons, conferences, and community events. These digital badges tell the story of continuous learning and active participation in the blockchain space. Ready to connect?"
+        nextSection="Contact"
+        position="right"
+      />
+
+      {/* Scroll Indicator */}
+      <ScrollIndicator message="Get in touch" position="bottom" />
     </section>
   );
 };

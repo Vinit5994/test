@@ -2,6 +2,9 @@
 
 import { motion } from 'framer-motion';
 import { ArrowRight, Code2, Mail, Phone, Sparkles } from 'lucide-react';
+import ScrollIndicator from '../ScrollIndicator';
+import StoryTransition from '../StoryTransition';
+import { StarDoodle, RocketDoodle } from '../DoodleElements';
 
 const HeroSection = () => {
   const containerVariants = {
@@ -126,23 +129,21 @@ const HeroSection = () => {
           </a>
         </motion.div>
 
-        {/* Scroll indicator */}
-        <motion.div
-          className="absolute bottom-12 left-1/2 transform -translate-x-1/2 flex flex-col items-center gap-2"
-          animate={{
-            x: [0, 10, 0],
-            opacity: [0.5, 1, 0.5],
-          }}
-          transition={{
-            duration: 2,
-            repeat: Infinity,
-            ease: 'easeInOut',
-          }}
-        >
-          <span className="text-xs font-medium tracking-wider uppercase" style={{ color: '#8FABD4' }}>Scroll</span>
-          <ArrowRight className="w-5 h-5" style={{ color: '#8FABD4' }} />
-        </motion.div>
       </motion.div>
+
+      {/* Doodle Art Elements */}
+      <StarDoodle className="absolute top-20 right-20 opacity-60" />
+      <RocketDoodle className="absolute bottom-20 left-20 opacity-50" />
+
+      {/* Story Transition */}
+      <StoryTransition
+        story="Welcome to my journey! Let me take you through my world of Web3 development, where blockchain meets innovation..."
+        nextSection="About Me"
+        position="right"
+      />
+
+      {/* Enhanced Scroll Indicator */}
+      <ScrollIndicator message="Swipe to explore my story" position="bottom" />
     </section>
   );
 };

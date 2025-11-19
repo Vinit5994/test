@@ -2,6 +2,9 @@
 
 import { motion } from 'framer-motion';
 import { Rocket, Shield, ExternalLink, Github } from 'lucide-react';
+import ScrollIndicator from '../ScrollIndicator';
+import StoryTransition from '../StoryTransition';
+import { HeartDoodle, StarDoodle } from '../DoodleElements';
 
 const ProjectsSection = () => {
   const projects = [
@@ -115,6 +118,20 @@ const ProjectsSection = () => {
           ))}
         </div>
       </div>
+
+      {/* Doodle Art Elements */}
+      <StarDoodle className="absolute top-16 left-16 opacity-60" />
+      <HeartDoodle className="absolute bottom-24 right-24 opacity-50" />
+
+      {/* Story Transition */}
+      <StoryTransition
+        story="These projects represent my passion for decentralization and fairness in blockchain. But building isn't just about code—it's about community. Check out my Web3 journey through POAPs..."
+        nextSection="POAP Collection"
+        position="right"
+      />
+
+      {/* Scroll Indicator */}
+      <ScrollIndicator message="View my POAPs" position="bottom" />
     </section>
   );
 };
