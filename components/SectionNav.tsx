@@ -45,30 +45,32 @@ const SectionNav = () => {
   useEffect(() => {
     if (!mounted) return;
 
-    // Wait for ScrollTrigger to be set up by HorizontalScroll
-    const timer = setTimeout(() => {
-      // Get the main ScrollTrigger instance
-      const triggers = ScrollTrigger.getAll();
-      const mainTrigger = triggers.find(t => t.vars.snap);
+    // Track scroll position to update active section
+    const updateActiveSection = () => {
+      const sectionCount = sections.length; // 7
+      const viewportWidth = window.innerWidth;
+      const scrollDistance = viewportWidth * (sectionCount - 1);
+      const scrollY = window.scrollY;
 
-      if (mainTrigger) {
-        // Update active section based on scroll progress
-        ScrollTrigger.create({
-          trigger: mainTrigger.trigger,
-          start: 'top top',
-          end: mainTrigger.vars.end,
-          onUpdate: (self) => {
-            // Calculate which section we're on (7 sections total)
-            const progress = self.progress;
-            const sectionIndex = Math.round(progress * 6); // 0 to 6
-            setActiveSection(sectionIndex);
-          },
-        });
-      }
-    }, 200);
+      // Calculate progress (0 to 1)
+      const progress = Math.min(Math.max(scrollY / scrollDistance, 0), 1);
+
+      // Calculate section index (0 to 6)
+      const sectionIndex = Math.round(progress * (sectionCount - 1));
+
+      setActiveSection(sectionIndex);
+    };
+
+    // Initial update
+    updateActiveSection();
+
+    // Listen to scroll events
+    window.addEventListener('scroll', updateActiveSection);
+    window.addEventListener('resize', updateActiveSection);
 
     return () => {
-      clearTimeout(timer);
+      window.removeEventListener('scroll', updateActiveSection);
+      window.removeEventListener('resize', updateActiveSection);
     };
   }, [mounted]);
 
