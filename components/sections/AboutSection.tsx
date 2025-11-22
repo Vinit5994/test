@@ -2,16 +2,21 @@
 
 import { motion } from 'framer-motion';
 import { Code2, Database, Globe, Layers } from 'lucide-react';
+import Image from 'next/image';
 
 const AboutSection = () => {
-  const languages = ['C++', 'JavaScript', 'TypeScript', 'Python'];
+  const languages = ['Solidity', 'Rust', 'JavaScript', 'TypeScript', 'Python', 'C++'];
   const technologies = [
     'ReactJS',
     'NextJS',
     'NodeJS',
     'MongoDB',
-    'Subgraph',
-    'MySQL',
+    'SQL',
+    'Subgraphs',
+    'FastAPI',
+    'Pinecone',
+    'RAG Architecture',
+    'Tailwind CSS',
     'Git',
     'GitHub',
   ];
@@ -46,7 +51,7 @@ const AboutSection = () => {
           <div className="relative w-full max-w-md mx-auto">
             {/* Decorative elements */}
             <motion.div
-              className="absolute -top-4 -left-4 w-48 h-48 sm:w-72 sm:h-72 rounded-3xl blur-2xl"
+              className="absolute -top-4 -left-4 w-48 h-48 sm:w-72 sm:h-72 rounded-3xl blur-2xl z-10"
               style={{ backgroundColor: 'rgba(143, 171, 212, 0.2)' }}
               animate={{
                 scale: [1, 1.1, 1],
@@ -59,36 +64,47 @@ const AboutSection = () => {
               }}
             />
 
-            {/* Photo placeholder */}
-            <div className="relative z-10 aspect-square rounded-2xl sm:rounded-3xl glass overflow-hidden border-2" style={{ borderColor: 'rgba(74, 112, 169, 0.2)' }}>
-              <div className="w-full h-full bg-gradient-to-br flex items-center justify-center" style={{ background: 'linear-gradient(135deg, rgba(143, 171, 212, 0.2) 0%, rgba(74, 112, 169, 0.2) 100%)' }}>
-                <div className="text-center p-4">
-                  <div className="w-20 h-20 sm:w-32 sm:h-32 mx-auto mb-3 sm:mb-4 rounded-full flex items-center justify-center" style={{ backgroundColor: 'rgba(74, 112, 169, 0.3)' }}>
-                    <span className="text-3xl sm:text-5xl font-bold gradient-text">VP</span>
-                  </div>
-                  <p className="text-xs sm:text-sm text-gray-400">
-                    Add your photo here
-                    <br />
-                    (400x400px recommended)
-                  </p>
-                </div>
+            {/* Profile Photo */}
+            <div className="relative z-20 aspect-square rounded-2xl sm:rounded-3xl glass overflow-hidden border-2 shadow-2xl" style={{ borderColor: 'rgba(74, 112, 169, 0.3)' }}>
+              <div className="relative w-full h-full">
+                <Image
+                  src="/profile.jpg"
+                  alt="Vinit Pithadiya - Web3 Developer"
+                  fill
+                  sizes="(max-width: 768px) 80vw, (max-width: 1200px) 40vw, 30vw"
+                  className="object-cover object-top transition-transform duration-700 hover:scale-110"
+                  priority
+                  style={{ objectPosition: '25% 85%' }}
+                />
+                {/* Overlay gradient for better text readability */}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent" />
+
+                {/* Optional photo frame effect */}
+                <div className="absolute inset-0 bg-gradient-to-br from-indigo-500/10 via-transparent to-purple-500/10 opacity-0 hover:opacity-100 transition-opacity duration-500" />
               </div>
             </div>
 
             {/* Floating skill badges - hidden on mobile */}
             <motion.div
-              className="hidden lg:block absolute -right-8 top-1/4 px-4 py-2 glass rounded-full text-sm font-medium"
+              className="hidden lg:block absolute -right-8 top-1/4 px-4 py-2 glass rounded-full text-sm font-medium z-30 shadow-lg"
               animate={{ y: [0, -10, 0] }}
               transition={{ duration: 3, repeat: Infinity }}
             >
               Web3 Developer
             </motion.div>
             <motion.div
-              className="hidden lg:block absolute -left-8 bottom-1/4 px-4 py-2 glass rounded-full text-sm font-medium"
+              className="hidden lg:block absolute -left-8 bottom-1/4 px-4 py-2 glass rounded-full text-sm font-medium z-30 shadow-lg"
               animate={{ y: [0, 10, 0] }}
               transition={{ duration: 3, repeat: Infinity, delay: 0.5 }}
             >
-              Blockchain Expert
+              Full Stack dev
+            </motion.div>
+            <motion.div
+              className="hidden lg:block absolute -left-8 bottom-3/4 px-4 py-2 glass rounded-full text-sm font-medium z-30 shadow-lg"
+              animate={{ y: [0, 10, 0] }}
+              transition={{ duration: 3, repeat: Infinity, delay: 0.5 }}
+            >
+              0xvinit.eth
             </motion.div>
           </div>
         </motion.div>
@@ -117,11 +133,11 @@ const AboutSection = () => {
           </p>
 
           {/* Skills grid */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4 mb-6 sm:mb-8">
+          {/* <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4 mb-6 sm:mb-8">
             {skills.map((skill, index) => (
               <motion.div
                 key={index}
-                className="glass rounded-lg sm:rounded-xl p-3 sm:p-4 cursor-hover group hover:bg-white/5 dark:hover:bg-white/5 transition-all glow-effect"
+                className="glass rounded-lg sm:rounded-xl p-3 sm:p-4 cursor-hover cursor-pointer group hover:bg-white/5 dark:hover:bg-white/5 transition-all glow-effect"
                 whileHover={{ scale: 1.05 }}
                 transition={{ duration: 0.2 }}
               >
@@ -130,7 +146,7 @@ const AboutSection = () => {
                 <p className="text-xs sm:text-sm text-gray-600 dark:text-gray-400">{skill.desc}</p>
               </motion.div>
             ))}
-          </div>
+          </div> */}
 
           {/* Languages */}
           <div className="mb-4 sm:mb-6">
@@ -141,7 +157,7 @@ const AboutSection = () => {
               {languages.map((lang, index) => (
                 <motion.span
                   key={index}
-                  className="px-3 py-1.5 sm:px-4 sm:py-2 glass rounded-full text-xs sm:text-sm cursor-hover hover:bg-indigo-500/20 transition-colors"
+                  className="px-3 py-1.5 sm:px-4 sm:py-2 glass rounded-full text-xs sm:text-sm cursor-hover cursor-pointer hover:bg-indigo-500/20 transition-colors"
                   whileHover={{ scale: 1.05 }}
                 >
                   {lang}
@@ -159,7 +175,7 @@ const AboutSection = () => {
               {technologies.map((tech, index) => (
                 <motion.span
                   key={index}
-                  className="px-3 py-1.5 sm:px-4 sm:py-2 glass rounded-full text-xs sm:text-sm cursor-hover hover:bg-indigo-500/20 transition-colors"
+                  className="px-3 py-1.5 sm:px-4 sm:py-2 glass rounded-full text-xs sm:text-sm cursor-hover cursor-pointer hover:bg-indigo-500/20 transition-colors"
                   whileHover={{ scale: 1.05 }}
                 >
                   {tech}

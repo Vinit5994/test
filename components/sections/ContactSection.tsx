@@ -1,36 +1,37 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { Mail, Phone, Github, Linkedin, Send, MessageSquare } from 'lucide-react';
+import { Mail, Send, MessageSquare, Zap } from 'lucide-react';
+import Image from 'next/image';
 
 const ContactSection = () => {
   const contactMethods = [
     {
-      icon: Mail,
-      label: 'Email',
-      value: 'vinitpithadiya@gmail.com',
-      href: 'mailto:vinitpithadiya@gmail.com',
-      color: 'from-indigo-500 to-blue-500',
+      image: '/contact/twitter.png',
+      label: 'X (Twitter)',
+      value: '@VinitPithadiya2',
+      href: 'https://x.com/VinitPithadiya2',
+      color: 'from-gray-800 to-black',
     },
     {
-      icon: Phone,
-      label: 'Phone',
-      value: '+91-6354669654',
-      href: 'tel:+916354669654',
-      color: 'from-purple-500 to-pink-500',
+      image: '/contact/og-logo-v3.png',
+      label: 'Farcaster',
+      value: '0xvinit',
+      href: 'https://warpcast.com/0xvinit',
+      color: 'from-purple-500 to-violet-500',
     },
     {
-      icon: Github,
+      image: '/contact/github-sign.png',
       label: 'GitHub',
-      value: 'github.com/vinit',
-      href: 'https://github.com',
+      value: 'github.com/Vinit5994',
+      href: 'https://github.com/Vinit5994',
       color: 'from-gray-500 to-gray-700',
     },
     {
-      icon: Linkedin,
+      image: '/contact/linkedin.png',
       label: 'LinkedIn',
-      value: 'linkedin.com/in/vinit',
-      href: 'https://linkedin.com',
+      value: 'linkedin.com/in/vinit-pithadiya',
+      href: 'https://www.linkedin.com/in/vinit-pithadiya-a78a05239/',
       color: 'from-blue-500 to-blue-700',
     },
   ];
@@ -98,7 +99,7 @@ const ContactSection = () => {
           </p> */}
         </motion.div>
 
-        <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 md:gap-6 mb-6 sm:mb-8 md:mb-12 overflow-y-auto scrollbar-hide max-h-[45vh] sm:max-h-[50vh]">
+        <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 md:gap-6 mb-6 sm:mb-8 md:mb-12 ">
           {contactMethods.map((method, index) => (
             <motion.a
               key={index}
@@ -109,19 +110,36 @@ const ContactSection = () => {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
               viewport={{ once: true }}
-              className="relative group cursor-hover"
-              whileHover={{ scale: 1.05, y: -5 }}
+              className="relative group cursor-hover cursor-pointer px-3 block"
+              whileHover={{ y: -3 }}
             >
               {/* Gradient background */}
               <div
-                className={`absolute inset-0 bg-gradient-to-br ${method.color} opacity-0 group-hover:opacity-10 rounded-2xl transition-opacity duration-300 blur-xl`}
+                className={`absolute -inset-4 bg-gradient-to-br ${method.color} opacity-0 group-hover:opacity-10 rounded-2xl transition-opacity duration-300 blur-xl`}
               />
 
-              <div className="relative glass rounded-xl sm:rounded-2xl p-3 sm:p-4 md:p-6 hover:bg-white/5 transition-all duration-300 h-full glow-effect">
+              <div className="relative glass rounded-xl sm:rounded-2xl p-3 sm:p-4 md:p-6 hover:bg-white/5 transition-all duration-300 h-full glow-effect overflow-visible">
                 <div
-                  className={`inline-flex p-2 sm:p-2.5 md:p-3 rounded-lg sm:rounded-xl bg-gradient-to-br ${method.color} mb-2 sm:mb-3 md:mb-4 group-hover:scale-110 transition-transform duration-300`}
+                  className="relative inline-flex items-center justify-center mb-2 sm:mb-3 md:mb-4 transition-transform duration-300"
+                  style={{ 
+                    minWidth: '40px', 
+                    minHeight: '40px',
+                    maxWidth: '40px',
+                    maxHeight: '40px'
+                  }}
                 >
-                  <method.icon className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6" />
+                  {method.image ? (
+                    <Image
+                      src={method.image}
+                      alt={method.label}
+                      width={40}
+                      height={40}
+                      className="object-contain w-full h-full group-hover:scale-110 transition-transform duration-300"
+                      style={{ maxWidth: '40px', maxHeight: '40px' }}
+                    />
+                  ) : (
+                    <Zap className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6" />
+                  )}
                 </div>
 
                 <h3 className="font-semibold mb-1 sm:mb-2 text-sm sm:text-base md:text-lg">{method.label}</h3>
@@ -155,7 +173,7 @@ const ContactSection = () => {
             </p>
             <motion.a
               href="mailto:vinitpithadiya@gmail.com"
-              className="px-4 sm:px-6 md:px-8 py-2 sm:py-3 md:py-4 bg-gradient-to-r from-indigo-500 to-purple-500 rounded-full font-semibold flex items-center gap-1 sm:gap-2 cursor-hover group glow-effect text-sm sm:text-base"
+              className="px-4 sm:px-6 md:px-8 py-2 sm:py-3 md:py-4 bg-gradient-to-r from-indigo-500 to-purple-500 rounded-full font-semibold flex items-center gap-1 sm:gap-2 cursor-hover cursor-pointer group glow-effect text-sm sm:text-base"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
@@ -175,7 +193,7 @@ const ContactSection = () => {
           viewport={{ once: true }}
           className="text-center mt-6 sm:mt-8 md:mt-12 text-[10px] sm:text-xs md:text-sm text-gray-500"
         >
-          <p>© 2024 Vinit Pithadiya. Built with Next.js & Framer Motion</p>
+          <p>© 2025 Vinit Pithadiya. </p>
         </motion.div>
       </div>
     </section>

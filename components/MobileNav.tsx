@@ -67,7 +67,7 @@ const MobileNav = () => {
       {/* Hamburger Menu Button */}
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="fixed top-6 left-6 z-[60] w-16 h-16 rounded-full glass cursor-hover lg:hidden flex items-center justify-center group"
+        className="fixed top-6 left-6 z-[60] w-16 h-16 rounded-full glass cursor-hover cursor-pointer lg:hidden flex items-center justify-center group"
         aria-label="Toggle menu"
       >
         <div className="relative w-7 h-7">
@@ -94,7 +94,7 @@ const MobileNav = () => {
               initial={{ backdropFilter: 'blur(0px)' }}
               animate={{ backdropFilter: 'blur(10px)' }}
               exit={{ backdropFilter: 'blur(0px)' }}
-              className="absolute inset-0 bg-background/95"
+              className="absolute inset-0 bg-background/95 cursor-pointer"
               onClick={() => setIsOpen(false)}
             />
 
@@ -109,7 +109,7 @@ const MobileNav = () => {
                     exit={{ opacity: 0, y: 20 }}
                     transition={{ delay: index * 0.1, duration: 0.3 }}
                     onClick={() => scrollToSection(index)}
-                    className="text-4xl font-bold text-foreground hover:text-indigo-400 transition-colors duration-300 cursor-hover group"
+                    className="text-4xl font-bold text-foreground hover:text-indigo-400 transition-colors duration-300 cursor-hover cursor-pointer group"
                   >
                     <span className="relative inline-block">
                       {section.label}

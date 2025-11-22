@@ -27,10 +27,9 @@ const HorizontalScroll = ({ children }: HorizontalScrollProps) => {
 
       // Count sections (children)
       const sectionCount = scroll.children.length;
-      const scrollWidth = viewportWidth * sectionCount;
 
-      // Calculate exact scroll distance
-      const scrollDistance = scrollWidth - viewportWidth;
+      // Calculate exact scroll distance - this should match SectionNav calculation
+      const scrollDistance = viewportWidth * (sectionCount - 1);
 
       // Only setup GSAP if there's content to scroll
       if (scrollDistance > 0) {

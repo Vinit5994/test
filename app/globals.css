@@ -66,6 +66,17 @@ body {
   cursor: none !important;
 }
 
+/* Show pointer cursor for interactive elements */
+a, button, [role="button"], .cursor-pointer {
+  cursor: pointer !important;
+}
+
+/* Ensure pointer cursor on hover for all interactive elements */
+a:hover, button:hover, [role="button"]:hover, .cursor-pointer:hover,
+a:focus, button:focus, [role="button"]:focus, .cursor-pointer:focus {
+  cursor: pointer !important;
+}
+
 /* Custom scrollbar */
 ::-webkit-scrollbar {
   width: 10px;
@@ -114,6 +125,33 @@ body {
   -webkit-text-fill-color: transparent;
   background-clip: text;
   animation: gradientShift 4s ease-in-out infinite;
+}
+
+/* Gradient button with hover effect */
+.gradient-button {
+  background: linear-gradient(120deg, var(--accent) 0%, var(--accent-secondary) 50%, var(--accent) 100%);
+  background-size: 200% auto;
+  color: white;
+  border: 1px solid transparent;
+  transition: all 0.3s ease;
+  animation: gradientShift 4s ease-in-out infinite;
+  position: relative;
+}
+
+.gradient-button svg {
+  color: white;
+}
+
+.gradient-button:hover {
+  background: var(--background);
+  filter: brightness(0.85);
+  color: var(--foreground);
+  border-color: var(--accent);
+  animation: none;
+}
+
+.gradient-button:hover svg {
+  color: var(--foreground);
 }
 
 @keyframes gradientShift {

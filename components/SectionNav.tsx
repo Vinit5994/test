@@ -49,16 +49,34 @@ const SectionNav = () => {
     const updateActiveSection = () => {
       const sectionCount = sections.length; // 7
       const viewportWidth = window.innerWidth;
-      const scrollDistance = viewportWidth * (sectionCount - 1);
+      const totalScrollDistance = viewportWidth * (sectionCount - 1);
       const scrollY = window.scrollY;
 
-      // Calculate progress (0 to 1)
-      const progress = Math.min(Math.max(scrollY / scrollDistance, 0), 1);
+      // Handle edge cases first
+      if (scrollY <= 10) {
+        // Near top - definitely section 0 (home)
+        setActiveSection(0);
+        return;
+      }
 
-      // Calculate section index (0 to 6)
-      const sectionIndex = Math.round(progress * (sectionCount - 1));
+      if (totalScrollDistance > 0 && scrollY >= totalScrollDistance - 10) {
+        // Near bottom - definitely last section
+        setActiveSection(sectionCount - 1);
+        return;
+      }
 
-      setActiveSection(sectionIndex);
+      // Calculate section based on scroll position
+      if (totalScrollDistance > 0) {
+        const sectionWidth = totalScrollDistance / (sectionCount - 1);
+        let sectionIndex = Math.round(scrollY / sectionWidth);
+
+        // Ensure bounds
+        sectionIndex = Math.max(0, Math.min(sectionIndex, sectionCount - 1));
+
+        setActiveSection(sectionIndex);
+      } else {
+        setActiveSection(0);
+      }
     };
 
     // Initial update
@@ -80,11 +98,22 @@ const SectionNav = () => {
     const viewportWidth = window.innerWidth;
 
     // This matches the calculation in HorizontalScroll component
-    const scrollDistance = viewportWidth * (sectionCount - 1);
+    const totalScrollDistance = viewportWidth * (sectionCount - 1);
 
     // Calculate target scroll position for this section
-    // Progress through sections: 0 to 6 becomes 0/6, 1/6, 2/6, etc.
-    const targetScroll = scrollDistance * (index / (sectionCount - 1));
+    let targetScroll = 0;
+
+    if (index === 0) {
+      targetScroll = 0; // Home - top of page
+    } else if (index === sectionCount - 1) {
+      targetScroll = totalScrollDistance; // Last section - bottom
+    } else {
+      // Middle sections
+      targetScroll = totalScrollDistance * (index / (sectionCount - 1));
+    }
+
+    // Ensure we don't exceed bounds
+    targetScroll = Math.max(0, Math.min(targetScroll, totalScrollDistance));
 
     window.scrollTo({
       top: targetScroll,
@@ -131,7 +160,7 @@ const SectionNav = () => {
               <motion.button
                 key={section.id}
                 onClick={() => scrollToSection(index)}
-                className="group relative cursor-hover z-50"
+                className="group relative cursor-hover cursor-pointer z-50"
                 aria-label={`Go to ${section.label}`}
                 style={{ pointerEvents: 'auto' }}
                 animate={isHovered ? {

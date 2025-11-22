@@ -20,7 +20,7 @@ const ThemeToggle = () => {
   return createPortal(
     <button
       onClick={toggleTheme}
-      className="fixed top-6 right-6 md:top-8 md:right-8 z-50 w-16 h-16 md:w-14 md:h-14 rounded-full glass cursor-hover group overflow-hidden"
+      className="fixed top-6 right-6 md:top-8 md:right-8 z-50 w-16 h-16 md:w-14 md:h-14 rounded-full glass cursor-hover cursor-pointer group overflow-hidden"
       aria-label="Toggle theme"
     >
       {/* Background gradient effect */}

@@ -1,7 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { ArrowRight, Code2, Mail, Phone, Sparkles } from 'lucide-react';
+import { ArrowRight, Code2, Mail, Phone, Download, Github, Linkedin, Globe } from 'lucide-react';
 
 const HeroSection = () => {
   const containerVariants = {
@@ -83,46 +83,74 @@ const HeroSection = () => {
 
         {/* CTA Buttons */}
         <motion.div variants={itemVariants} className="flex flex-wrap gap-4 mb-16 justify-center">
-          <a
-            href="#about"
-            className="cursor-hover group px-8 py-3.5 text-white rounded-lg font-medium transition-all duration-200 flex items-center gap-2 glow-effect"
+          <button
+            onClick={() => {
+              // Navigate to projects section using the same logic as sidebar
+              const sectionCount = 7; // Total sections
+              const projectsIndex = 4; // Projects is at index 4
+              const viewportWidth = window.innerWidth;
+              const totalScrollDistance = viewportWidth * (sectionCount - 1);
+
+              // Calculate target scroll position for projects section
+              const targetScroll = totalScrollDistance * (projectsIndex / (sectionCount - 1));
+
+              window.scrollTo({
+                top: targetScroll,
+                behavior: 'smooth',
+              });
+            }}
+            className="cursor-hover cursor-pointer group px-8 py-3.5 text-white rounded-lg font-medium transition-all duration-200 flex items-center gap-2 glow-effect"
             style={{ backgroundColor: '#4A70A9' }}
             onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#3a5a89'}
             onMouseLeave={(e) => e.currentTarget.style.backgroundColor = '#4A70A9'}
           >
-            <span>Explore My Work</span>
+            <span>View Projects</span>
             <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-          </a>
+          </button>
           <a
-            href="#contact"
-            className="cursor-hover px-8 py-3.5 border rounded-lg font-medium transition-all duration-200 glow-effect"
+            href="/resume.pdf"
+            download="Vinit_Pithadiya_Resume.pdf"
+            className="cursor-hover cursor-pointer group px-8 py-3.5 border rounded-lg font-medium transition-all duration-200 flex items-center gap-2 glow-effect"
             style={{ borderColor: '#4A70A9' }}
             onMouseEnter={(e) => e.currentTarget.style.borderColor = '#8FABD4'}
             onMouseLeave={(e) => e.currentTarget.style.borderColor = '#4A70A9'}
           >
-            Get In Touch
+            <Download className="w-4 h-4" />
+            <span>Download Resume</span>
           </a>
         </motion.div>
 
-        {/* Contact Links */}
+        {/* Social Links */}
         <motion.div
           variants={itemVariants}
           className="flex flex-wrap gap-6 items-center justify-center text-sm"
         >
           <a
-            href="mailto:vinitpithadiya@gmail.com"
-            className="cursor-hover flex items-center gap-2 text-gray-600 dark:text-gray-400 hover:text-purple-600 dark:hover:text-purple-400 transition-colors"
+            href="https://github.com/vinitpithadiya"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="cursor-hover cursor-pointer flex items-center gap-2 text-gray-600 dark:text-gray-400 hover:text-purple-600 dark:hover:text-purple-400 transition-colors"
           >
-            <Mail className="w-4 h-4" />
-            <span>vinitpithadiya@gmail.com</span>
+            <Github className="w-4 h-4" />
+            <span>GitHub</span>
           </a>
           <span className="text-gray-300 dark:text-gray-700">•</span>
           <a
-            href="tel:+916354669654"
-            className="cursor-hover flex items-center gap-2 text-gray-600 dark:text-gray-400 hover:text-purple-600 dark:hover:text-purple-400 transition-colors"
+            href="https://linkedin.com/in/vinit-pithadiya"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="cursor-hover cursor-pointer flex items-center gap-2 text-gray-600 dark:text-gray-400 hover:text-purple-600 dark:hover:text-purple-400 transition-colors"
           >
-            <Phone className="w-4 h-4" />
-            <span>+91-6354669654</span>
+            <Linkedin className="w-4 h-4" />
+            <span>LinkedIn</span>
+          </a>
+          <span className="text-gray-300 dark:text-gray-700">•</span>
+          <a
+            href="mailto:vinitpithadiya@gmail.com"
+            className="cursor-hover cursor-pointer flex items-center gap-2 text-gray-600 dark:text-gray-400 hover:text-purple-600 dark:hover:text-purple-400 transition-colors"
+          >
+            <Mail className="w-4 h-4" />
+            <span>Email</span>
           </a>
         </motion.div>
 
