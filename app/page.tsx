@@ -16,9 +16,7 @@ const MobileNav = dynamic(() => import('@/components/MobileNav'), {
   ssr: false,
 });
 
-const VisualStoryPath = dynamic(() => import('@/components/VisualStoryPath'), {
-  ssr: false,
-});
+
 
 const LoadingScreen = dynamic(() => import('@/components/LoadingScreen'), {
   ssr: false,
@@ -42,7 +40,6 @@ export default function Home() {
       <ThemeToggle />
       <SectionNav />
       <MobileNav />
-      <VisualStoryPath />
 
       <HorizontalScroll>
         <HeroSection />

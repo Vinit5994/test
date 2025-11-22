@@ -1,7 +1,7 @@
 'use client';
 
-import { motion } from 'framer-motion';
 import { useEffect, useState } from 'react';
+import { createPortal } from 'react-dom';
 
 const VisualStoryPath = () => {
   const [mounted, setMounted] = useState(false);
@@ -20,11 +20,9 @@ const VisualStoryPath = () => {
     };
 
     updateActiveSection();
-    window.addEventListener('scroll', updateActiveSection);
+    window.addEventListener('scroll', updateActiveSection, { passive: true });
     return () => window.removeEventListener('scroll', updateActiveSection);
   }, []);
-
-  if (!mounted) return null;
 
   // Story icons for each section - tells the journey visually
   const storyIcons = [
@@ -65,11 +63,15 @@ const VisualStoryPath = () => {
     },
   ];
 
-  return (
+  if (!mounted) {
+    return null;
+  }
+
+  return createPortal(
     <div className="fixed right-8 top-1/2 -translate-y-1/2 z-40 hidden xl:flex flex-col items-center gap-3">
       {/* Vertical connecting line - the journey path */}
       <svg className="absolute top-0 left-1/2 -translate-x-1/2 h-full" width="2" style={{ height: '400px' }}>
-        <motion.line
+        <line
           x1="1"
           y1="0"
           x2="1"
@@ -77,9 +79,6 @@ const VisualStoryPath = () => {
           stroke="url(#journeyGradient)"
           strokeWidth="2"
           strokeDasharray="4 4"
-          initial={{ pathLength: 0 }}
-          animate={{ pathLength: 1 }}
-          transition={{ duration: 2, ease: "easeInOut" }}
         />
         <defs>
           <linearGradient id="journeyGradient" x1="0%" y1="0%" x2="0%" y2="100%">
@@ -92,34 +91,33 @@ const VisualStoryPath = () => {
 
       {/* Story icons */}
       {storyIcons.map((item, index) => (
-        <motion.div
+        <div
           key={index}
           className="relative z-10"
-          initial={{ opacity: 0, scale: 0 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ delay: index * 0.1, duration: 0.5 }}
+          style={{
+            opacity: 1,
+            transform: 'scale(1)',
+            transition: `all 0.5s ease ${index * 0.1}s`,
+          }}
         >
           {/* Icon container */}
-          <motion.div
+          <div
             className="relative flex items-center justify-center w-12 h-12 rounded-full backdrop-blur-sm border-2 transition-all duration-300"
             style={{
               backgroundColor: activeSection === index ? `${item.color}20` : 'rgba(255, 255, 255, 0.05)',
               borderColor: activeSection === index ? item.color : 'rgba(255, 255, 255, 0.1)',
               boxShadow: activeSection === index ? `0 0 20px ${item.color}40` : 'none',
+              transform: activeSection === index ? 'scale(1.2)' : 'scale(1)',
             }}
-            animate={{
-              scale: activeSection === index ? 1.2 : 1,
-            }}
-            transition={{ duration: 0.3 }}
           >
             <span className="text-2xl" style={{ filter: activeSection === index ? 'none' : 'grayscale(80%) opacity(0.5)' }}>
               {item.icon}
             </span>
-          </motion.div>
+          </div>
 
           {/* Label - appears on hover */}
-          <motion.div
-            className="absolute right-16 top-1/2 -translate-y-1/2 whitespace-nowrap opacity-0 hover:opacity-100 transition-opacity duration-300 pointer-events-none"
+          <div
+            className="absolute right-16 top-1/2 -translate-y-1/2 whitespace-nowrap transition-opacity duration-300 pointer-events-none"
             style={{
               opacity: activeSection === index ? 1 : 0,
             }}
@@ -134,23 +132,21 @@ const VisualStoryPath = () => {
             >
               {item.label}
             </div>
-          </motion.div>
+          </div>
 
           {/* Connecting dot animation when active */}
           {activeSection === index && (
-            <motion.div
-              className="absolute inset-0 rounded-full"
+            <div
+              className="absolute inset-0 rounded-full animate-ping"
               style={{
                 border: `2px solid ${item.color}`,
               }}
-              initial={{ scale: 1, opacity: 1 }}
-              animate={{ scale: 1.5, opacity: 0 }}
-              transition={{ duration: 1.5, repeat: Infinity }}
             />
           )}
-        </motion.div>
+        </div>
       ))}
-    </div>
+    </div>,
+    document.body
   );
 };
 
